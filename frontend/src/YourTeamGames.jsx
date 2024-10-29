@@ -1,10 +1,13 @@
 // src/YourTeamGames.js
-import React, { useState, useEffect } from 'react';
-import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import React, {useState, useEffect} from 'react';
+import {Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material';
 import axios from 'axios';
 import LeagueDropdown from './components/LeagueDropdown';
 import TeamDropdown from './components/TeamDropdown';
+import GameTable from './components/GameTable';
+import SelectLeagueAndTeam from "./components/LeagueTeamSelect";
 import config from "./config";
+
 export default function YourTeamGames() {
     const [selectedLeague, setSelectedLeague] = useState('');
     const [selectedTeam, setSelectedTeam] = useState('');
@@ -26,12 +29,13 @@ export default function YourTeamGames() {
         if (selectedTeam) {
             async function fetchGames() {
                 try {
-                const response = await axios.get(`${config.API_GET_ALL_LEAGUES}`);
+                    const response = await axios.get(`${config.API_GET_ALL_GAMES}/${selectedLeague}/${selectedTeam}`);
                     setGames(response.data);
                 } catch (error) {
                     console.error('Error fetching games:', error);
                 }
             }
+
             fetchGames();
         } else {
             setGames([]);
@@ -39,40 +43,17 @@ export default function YourTeamGames() {
     }, [selectedTeam]);
 
     return (
-        <Box sx={{ p: 3 }}>
-            <Typography variant="h5" gutterBottom>
-                Select League and Team
-            </Typography>
-            <LeagueDropdown onLeagueSelect={handleLeagueSelect} />
-            <TeamDropdown selectedLeague={selectedLeague} onTeamSelect={handleTeamSelect} />
-
+        <Box sx={{p: 3}}>
+            <SelectLeagueAndTeam
+                handleLeagueSelect={handleLeagueSelect}
+                handleTeamSelect={handleTeamSelect}
+                selectedLeague={selectedLeague}/>
             {showGames && (
-                <Box sx={{ mt: 4 }}>
+                <Box sx={{mt: 4}}>
                     <Typography variant="h6" gutterBottom>
                         Upcoming Games
                     </Typography>
-                    <TableContainer component={Paper}>
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Date</TableCell>
-                                    <TableCell>Time</TableCell>
-                                    <TableCell>Opponent</TableCell>
-                                    <TableCell>Location</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {games.map((game, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell>{game.date}</TableCell>
-                                        <TableCell>{game.time}</TableCell>
-                                        <TableCell>{game.opponent}</TableCell>
-                                        <TableCell>{game.location}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                    <GameTable games={games}/>
                 </Box>
             )}
         </Box>

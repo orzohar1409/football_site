@@ -1,7 +1,7 @@
 import requests
-import config
+from config import config
 import json
-url = "https://v3.football.api-sports.io/teams?league=39&season=2022"
+url = "https://v3.football.api-sports.io/fixtures?league=39&season=2022&team=33"
 
 payload={}
 headers = config.API_REQUEST_HEADERS

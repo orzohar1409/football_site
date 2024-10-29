@@ -14,10 +14,13 @@ class CacheKey:
         self.expiration = expiration
 
 
+DAY_IN_SECONDS = 86400
+
+
 class CacheKeys(Enum):
-    LEAGUES = CacheKey('leagues', 3600)
-    TEAMS = CacheKey('teams', 3600)
-    FIXTURES = CacheKey('fixtures', 60)
+    LEAGUES = CacheKey('leagues', 10 * DAY_IN_SECONDS)
+    TEAMS = CacheKey('teams', 10 * DAY_IN_SECONDS)
+    GAMES = CacheKey('games', DAY_IN_SECONDS)
 
 
 class Config:
@@ -53,6 +56,7 @@ class Config:
         self.FRONTEND_DOMAIN = f"{self.APP_HOSTNAME}:{self.FRONTEND_PORT}"
 
         self.FOOTBALL_API_BASE_URL = "https://v3.football.api-sports.io"
+
 
 # Instantiate the global config object
 config = Config(shared_config_data)
