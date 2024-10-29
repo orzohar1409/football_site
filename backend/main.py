@@ -36,4 +36,5 @@ def serve_get_games(league_id, team_id):
     return get_all_games_by_league_and_team(league_id, team_id)
 
 if __name__ == '__main__':
-    app.run(host=HOST, port=PORT)
+    port = int(os.environ.get("PORT", 5003))  # Fallback to 5003 if PORT not set
+    app.run(host="0.0.0.0", port=port)
