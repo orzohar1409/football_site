@@ -17,7 +17,7 @@ export default function ResumePage() {
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
                 <Avatar
                     alt="Or Zohar"
-                    src="/path-to-your-profile-picture.jpg"
+                    src="https://media.licdn.com/dms/image/v2/D4D03AQH-S8ceA-_xig/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1708686253065?e=1735776000&v=beta&t=kEVbfm-uaC-lyULTiLpTWoe7mqeV8ErwksLR7r6J1uQ"
                     sx={{ width: 100, height: 100, mr: 2 }}
                 />
                 <Box>
