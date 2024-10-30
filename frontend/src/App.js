@@ -7,6 +7,7 @@ import TopAppBar from './components/TopAppBar';
 import SideDrawer from './components/SideDrawer';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
+import backgroundImage from './backgrounds/view-soccer-field-with-grass.jpg';
 
 const theme = createTheme({
     typography: {
@@ -22,11 +23,21 @@ function App() {
     };
 
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme} >
             <Router>
                 <TopAppBar onMenuClick={toggleDrawer}/>
-                <Box sx={{display: 'flex', marginTop: '64px'}}> {/* Adjust main content position */}
-                    <SideDrawer isOpen={isDrawerOpen}/>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        marginTop: '64px', // Adjust main content position
+                        minHeight: '100vh', // Full viewport height
+                        backgroundImage: `url(${backgroundImage})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundAttachment: 'fixed',
+                    }}
+                >                    <SideDrawer isOpen={isDrawerOpen}/>
                     <Box
                         component="main"
                         sx={{
