@@ -1,7 +1,7 @@
 // src/components/SideDrawer.js
 import React from 'react';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import { Home, AccountCircle } from '@mui/icons-material';
+import { Home, AccountCircle, Dehaze } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 export default function SideDrawer({ isOpen }) {
