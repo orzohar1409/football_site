@@ -1,7 +1,7 @@
 {
     "FRONTEND_PORT": "3000",
-    "API_PORT": "443",
-    "APP_HOSTNAME": "https://football-site-backend.onrender.com",
+    "API_PORT": "5003",
+    "APP_HOSTNAME": "http://localhost",
     "API_KEY": "b6a3ecfbd367417ba8373b35b34b0f88",
     "API_ENDPOINT": "api",
     "API_LEAGUES_ENDPOINT": "league",

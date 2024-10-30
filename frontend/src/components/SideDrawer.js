@@ -27,7 +27,7 @@ export default function SideDrawer({ isOpen }) {
                 </ListItem>
                 <ListItem button component={Link} to="/resume">
                     <ListItemIcon><AccountCircle /></ListItemIcon>
-                    <ListItemText primary="Resume" />
+                    <ListItemText primary="About me" />
                 </ListItem>
             </List>
         </Drawer>
