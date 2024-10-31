@@ -1,7 +1,7 @@
 // frontend/src/config.js
 
 const environment = process.env.ENVIRONMENT || 'dev';
-
+console.log(`Loading configuration for environment: ${environment}`);
 // Import the correct configuration file based on environment
 let sharedConfig;
 try {
