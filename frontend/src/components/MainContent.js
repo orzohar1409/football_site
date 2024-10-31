@@ -22,14 +22,15 @@ export default function MainContent({ isDrawerOpen }) {
         <Box
             sx={{
                 display: 'flex',
-                marginTop: '64px',
-                minHeight: '100vh', // Set minimum height to full viewport height
+                flexDirection: { xs: 'column', sm: 'row' }, // Column on mobile, row on larger screens
+                marginTop: { xs: '56px', sm: '64px' }, // Adjust top margin for mobile
+                minHeight: '100vh',
                 backgroundImage: isGamePage ? `url(${backgroundImage})` : 'none',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
-                height:"100vh",
-                width:"100vw",
+                width: '100%',
+                overflowX: 'hidden' // Prevent horizontal scroll on mobile
             }}
         >
             <SideDrawer isOpen={isDrawerOpen} />
