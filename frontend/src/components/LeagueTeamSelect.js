@@ -30,6 +30,8 @@ export default function SelectLeagueAndTeam({ handleLeagueSelect, handleTeamSele
                 transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
                 opacity: isVisible ? 1 : 0,
                 transition: 'transform 2s ease, opacity 1s ease',
+                backdropFilter: 'blur(8px)', // Blur effect
+                borderRadius: '8px', // Optional: rounded corners
                 mb: 2,
                 height: '120px'  // Fixed height for the dropdown area
             }}
