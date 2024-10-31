@@ -15,7 +15,7 @@ export default function SelectLeagueAndTeam({ handleLeagueSelect, handleTeamSele
     const handleMouseLeave = () => {
         timerRef.current = setTimeout(() => {
             setIsVisible(false); // Hide component after delay on mouse leave
-        }, 500); // Delay time in milliseconds
+        }, 2000); // Delay time in milliseconds
     };
 
     // Cleanup the timer on component unmount
@@ -36,6 +36,7 @@ export default function SelectLeagueAndTeam({ handleLeagueSelect, handleTeamSele
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
+
             <Typography variant="h5" gutterBottom>
                 Select League and Team
             </Typography>
