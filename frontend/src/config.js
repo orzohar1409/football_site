@@ -1,6 +1,6 @@
 // frontend/src/config.js
 
-import sharedConfig from './site_config.json';  // Adjust path as needed
+import sharedConfig from '../site_config.json';  // Adjust path as needed
 
 // Construct additional computed values
 sharedConfig.API_BASE_URL = `${sharedConfig.APP_HOSTNAME}:${sharedConfig.API_PORT}`;
