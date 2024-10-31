@@ -1,12 +1,13 @@
 import React from 'react';
-import { Box, Avatar, Typography, Divider, List, ListItem, ListItemIcon, ListItemText, Grid } from '@mui/material';
+import { Box, Avatar, Typography, Divider, List, ListItem, ListItemIcon, ListItemText, Grid, Link } from '@mui/material';
 import { Email, LinkedIn, GitHub, School, Code } from '@mui/icons-material';
 import ProfessionalSummary from "./ProfessionalSummary";
-
+import DownloadIcon from '@mui/icons-material/Download';
 export default function ResumePage() {
     return (
         <Box
             sx={{
+
                 maxWidth: '800px',
                 margin: 'auto',
                 padding: { xs: '8px', sm: '16px' },
@@ -31,6 +32,10 @@ export default function ResumePage() {
                 <a href="mailto:orzohar66@gmail.com"><Email fontSize="large" /></a>
                 <a href="https://www.linkedin.com/in/or-zohar-7403a5188/" target="_blank" rel="noopener noreferrer"><LinkedIn fontSize="large" /></a>
                 <a href="https://github.com/orzohar1409/football_site" target="_blank" rel="noopener noreferrer"><GitHub fontSize="large" /></a>
+                <Link href="https://www.dropbox.com/scl/fi/mqfc4wigl0i0g2i5bci4s/Or-Zohar-CV-2024.pdf?rlkey=wc2aeft742fithlxwdi78s3zn&st=zczg2ws1&dl=1" download sx={{ display: 'flex', alignItems: 'center', color: 'inherit', textDecoration: 'none' }}>
+                    <DownloadIcon />
+                    <Typography variant="body2" sx={{ ml: 1 }}>Download CV</Typography>
+                </Link>
             </Box>
 
             {/* Professional Summary Section */}
