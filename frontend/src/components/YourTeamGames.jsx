@@ -2,11 +2,11 @@
 import React, {useState, useEffect} from 'react';
 import {Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material';
 import axios from 'axios';
-import LeagueDropdown from './components/LeagueDropdown';
-import TeamDropdown from './components/TeamDropdown';
-import GameTable from './components/GameTable';
-import SelectLeagueAndTeam from "./components/LeagueTeamSelect";
-import config from "./config";
+import LeagueDropdown from './LeagueDropdown';
+import TeamDropdown from './TeamDropdown';
+import GameTable from './GameTable';
+import SelectLeagueAndTeam from "./LeagueTeamSelect";
+import config from "../config";
 
 export default function YourTeamGames() {
     const [selectedLeague, setSelectedLeague] = useState('');
