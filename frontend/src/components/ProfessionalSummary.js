@@ -5,7 +5,6 @@ export default function ProfessionalSummary() {
     return (
         <Box sx={{ maxWidth: '800px', margin: 'auto', padding: { xs: '8px', sm: '16px' } }}>
             {/* Professional Summary Section */}
-            <Typography variant="h5" gutterBottom>Professional Summary</Typography>
             <Box sx={{ pl: 2 }}> {/* Adjust padding-left as needed */}
                 <Typography variant="body1" paragraph>
                     • 3 Years as Cyber Analyst at CyberMDX (acquired by Forescout)

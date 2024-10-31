@@ -40,12 +40,7 @@ export default function ResumePage() {
 
             {/* Professional Summary Section */}
             <Typography variant="h5" gutterBottom>Professional Summary</Typography>
-            <Typography variant="body1" paragraph>
-                • 3 Years as Cyber Analyst at CyberMDX (acquired by Forescout) <br/>
-                • 2.5 Years in Big Data Analysis at the Cyber Defense Brigade (formerly part of Unit 8200):<br/>
-                &nbsp;&nbsp;Splunk, Elastic, SQL and MongoDB <br/>
-                • Expert in Cyber Operations, Threat Intelligence, and Data Analysis
-            </Typography>
+            <ProfessionalSummary/>
             <Divider sx={{ my: 2 }} />
 
             {/* Experience Section */}
