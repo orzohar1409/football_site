@@ -5,7 +5,7 @@ import DehazeOutlinedIcon from '@mui/icons-material/DehazeOutlined';
 import backgroundImage from '../backgrounds/appBarrBackground.jpg';
 export default function TopAppBar({ onMenuClick }) {
     return (
-        <AppBar position="fixed" sx={{ height: 64,
+        <AppBar position="sticky" sx={{ height: 64,
             zIndex: (theme) => theme.zIndex.drawer + 1,
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: 'cover',
