@@ -30,7 +30,7 @@ export default function SideMenu({ isOpen }) {
         ><List>
                 {appPages.map((page) => (
                     <ListItem key={page.name} disablePadding>
-                        <ListItemButton>
+                        <ListItemButton component={Link} to={page.path}>
                             <ListItemIcon hidden>
                                 {page.icon()} {/* Call icon as a function */}
                             </ListItemIcon>
