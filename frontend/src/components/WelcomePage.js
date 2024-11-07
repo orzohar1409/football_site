@@ -30,8 +30,9 @@ export default function WelcomePage({onStartClick}) {
                     <Box
                         component="img"
                         sx={{
-                            maxHeight: {xs: 233, md: 200},
-                            maxWidth: {xs: 350, md: 250},
+                            maxHeight: {xs: 200, md: 200},
+                            maxWidth: {xs: 200, md: 250},
+                            padding:2,
                         }}
                         src="../../logo.png"
                     />
