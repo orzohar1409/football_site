@@ -18,6 +18,7 @@ export default function WelcomePage({onStartClick}) {
                         alignItems: 'center',
                         height: '80vh',
                         padding: 0,
+                        position: 'center',
                         textAlign: 'center',
                     }}
                 >

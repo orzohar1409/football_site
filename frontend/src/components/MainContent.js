@@ -35,7 +35,7 @@ export default function MainContent({ isDrawerOpen, toggleDrawer }) {
                 component="main"
                 sx={{
                     flexGrow: 1,
-                    p: 3,
+                    p: 1,
                     transition: 'margin-left 0.3s ease', // Smooth transition for drawer effect
                     marginLeft: isDrawerOpen ? '240px' : '0', // Adjust margin based on drawer state
                     width: isDrawerOpen ? `calc(100% - 240px)` : '100%', // Shrink width when drawer is open
