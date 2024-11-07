@@ -1,9 +1,9 @@
 // src/components/SideDrawer.js
 import React from 'react';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText, Divider } from '@mui/material';
-import { Home, AccountCircle, Dehaze } from '@mui/icons-material';
+import { Home, AccountCircle } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-import drawerBackground from '../backgrounds/drawerBackground.jpg';
+import { appPages } from '../PagesConfig'; // Import your configuration file
 
 export default function SideDrawer({ isOpen }) {
     return (
@@ -12,13 +12,12 @@ export default function SideDrawer({ isOpen }) {
             anchor="left"
             open={isOpen}
             sx={{
-                width: 240,
                 flexShrink: 0,
                 '& .MuiDrawer-paper': {
                     width: 240,
                     boxSizing: 'border-box',
                     marginTop: '64px', // Start below the App Bar
-                    backgroundImage: `url(${drawerBackground})`, // Set the background image
+                    backgroundColor: 'rgba(73,50,54,0.7)', // Semi-transparent background
                     backgroundSize: 'cover', // Make the background cover the drawer area
                     backgroundPosition: 'center', // Center the background image
                     color: 'white', // Adjust text color if needed for contrast
@@ -37,16 +36,18 @@ export default function SideDrawer({ isOpen }) {
                         },
                     },
                 }}
-            >                <ListItem button component={Link} to="/">
-                    <ListItemIcon><Home /></ListItemIcon>
-                    <ListItemText primary="Your Team Games" />
-                </ListItem>
-                <Divider sx={{ bgcolor: 'rgba(255, 255, 255, 0.2)' }} /> {/* Adds a light divider */}
-
-                <ListItem button component={Link} to="/resume">
-                    <ListItemIcon><AccountCircle /></ListItemIcon>
-                    <ListItemText primary="About me" />
-                </ListItem>
+            >
+                {appPages.map((page, index) => (
+                    <React.Fragment key={index}>
+                        <ListItem button component={Link} to={page.path}>
+                            <ListItemIcon>{page.icon()}</ListItemIcon>
+                            <ListItemText primary={page.name} />
+                        </ListItem>
+                        {index < appPages.length - 1 && (
+                            <Divider sx={{ bgcolor: 'rgba(255, 255, 255, 0.2)' }} />
+                        )}
+                    </React.Fragment>
+                ))}
             </List>
         </Drawer>
     );

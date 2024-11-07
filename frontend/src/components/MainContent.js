@@ -6,7 +6,6 @@ import ResumePage from './ResumePage';
 import SideDrawer from './SideDrawer';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { createTheme } from '@mui/material/styles';
-import backgroundImage from '../backgrounds/view-soccer-field-with-grass.jpg';
 
 const theme = createTheme({
     typography: {
@@ -25,7 +24,6 @@ export default function MainContent({ isDrawerOpen }) {
                 flexDirection: { xs: 'column', sm: 'row' }, // Column on mobile, row on larger screens
                 marginTop: { xs: '56px', sm: '64px' }, // Adjust top margin for mobile
                 minHeight: '100vh',
-
                 width: '100%',
                 overflowX: 'hidden' // Prevent horizontal scroll on mobile
             }}
