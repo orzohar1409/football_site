@@ -1,11 +1,11 @@
 // src/App.js
 import React from 'react';
 import { Box } from '@mui/material';
-import YourTeamGames from './YourTeamGames';
-import ResumePage from './ResumePage';
+
 import SideDrawer from './SideDrawer';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { createTheme } from '@mui/material/styles';
+import {appPages} from "../PagesConfig";
 
 const theme = createTheme({
     typography: {
@@ -13,7 +13,7 @@ const theme = createTheme({
     },
 });
 
-export default function MainContent({ isDrawerOpen }) {
+export default function MainContent({ isDrawerOpen, drawerToggle }) {
     const location = useLocation();
     const isGamePage = location.pathname === '/';
 
@@ -42,8 +42,9 @@ export default function MainContent({ isDrawerOpen }) {
                 }}
             >
                 <Routes>
-                    <Route path="/" element={<YourTeamGames />} />
-                    <Route path="/resume" element={<ResumePage />} />
+                    {appPages.map((page, index) => (
+                        <Route key={index} path={page.path} element={page.component} />
+                    ))}
                 </Routes>
             </Box>
         </Box>

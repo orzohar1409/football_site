@@ -1,9 +1,11 @@
 // src/App.js
 import React, { useState } from 'react';
 import TopAppBar from './components/TopAppBar';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import Footer from './components/Footer';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MainContent from './components/MainContent';
+import './App.css';
 
 const theme = createTheme({
     typography: {
@@ -19,10 +21,10 @@ function App() {
     };
 
     return (
-        <ThemeProvider theme={theme} >
+        <ThemeProvider theme={theme}>
             <Router>
-                <TopAppBar onMenuClick={toggleDrawer} isDrawerOpen={isDrawerOpen}/>
-                <MainContent isDrawerOpen={isDrawerOpen} />
+                <TopAppBar onMenuClick={toggleDrawer} isDrawerOpen={isDrawerOpen} />
+                <MainContent isDrawerOpen={isDrawerOpen} drawerToggle={toggleDrawer} />
             </Router>
         </ThemeProvider>
     );

@@ -6,6 +6,7 @@ import TeamDropdown from './TeamDropdown';
 export default function SelectLeagueAndTeam({ handleLeagueSelect, handleTeamSelect, selectedLeague }) {
     const [isVisible, setIsVisible] = useState(true);
     return (
+
         <Box
             sx={{
                 overflow: 'hidden',

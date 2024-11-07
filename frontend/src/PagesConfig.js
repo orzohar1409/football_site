@@ -5,6 +5,7 @@ import SportsIcon from '@mui/icons-material/Sports';
 import YourTeamGames from './components/YourTeamGames';
 import ResumePage from './components/ResumePage';
 import WelcomePage from './components/WelcomePage';
+
 export const appPages = [
     {
         name: "Welcome",

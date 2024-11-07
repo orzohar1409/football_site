@@ -14,7 +14,7 @@ export default function TopAppBar({ onMenuClick, isDrawerOpen }) {
                     {isDrawerOpen ? <CloseIcon /> : <DehazeOutlinedIcon />}
                 </IconButton>
                 <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                    Or Zohar's Football Site
+                    Ballon d'Or Zohar
                 </Typography>
             </Toolbar>
         </AppBar>

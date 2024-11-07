@@ -1,0 +1,11 @@
+/* src/App.css */
+body, html, #root {
+    min-height: 100vh; /* Full height for the background */
+    margin: 0;
+    padding: 0;
+    background-color: antiquewhite;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Roboto, Arial, sans-serif';
+}

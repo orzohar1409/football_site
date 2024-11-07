@@ -1,10 +1,25 @@
 import React from 'react';
-import { Box, Avatar, Typography, Divider, List, ListItem, ListItemIcon, ListItemText, Grid, Link } from '@mui/material';
+import {
+    Box,
+    Avatar,
+    Typography,
+    Divider,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    Grid,
+    Link,
+    Slide
+} from '@mui/material';
 import { Email, LinkedIn, GitHub, School, Code } from '@mui/icons-material';
 import ProfessionalSummary from "./ProfessionalSummary";
 import DownloadIcon from '@mui/icons-material/Download';
 export default function ResumePage() {
     return (
+        <Slide direction="up" in={true} mountOnEnter unmountOnExit timeout={{
+            enter : 1000,
+        }}>
         <Box
             sx={{
 
@@ -171,6 +186,6 @@ export default function ResumePage() {
             <Box sx={{ textAlign: 'center', mt: 4 }}>
                 <Typography variant="caption">Or Zohar - 2024</Typography>
             </Box>
-        </Box>
+        </Box></Slide>
     );
 }
