@@ -42,9 +42,8 @@ export default function WelcomePage({onStartClick}) {
                 justifyContent: 'center',
                 alignItems: 'center',
                 padding: 2,
-                position: 'fixed',
+                position: 'center',
                 bottom: 0,
-                width: '80%',
             }}
             >
                 <Typography variant="body2" color="textSecondary">

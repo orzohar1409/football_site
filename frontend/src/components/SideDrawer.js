@@ -5,7 +5,7 @@ import { Home, AccountCircle } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { appPages } from '../PagesConfig'; // Import your configuration file
 
-export default function SideDrawer({ isOpen }) {
+export default function SideDrawer({ isOpen, onClick }) {
     return (
         <Drawer
             variant="persistent"
@@ -39,7 +39,7 @@ export default function SideDrawer({ isOpen }) {
             >
                 {appPages.map((page, index) => (
                     <React.Fragment key={index}>
-                        <ListItem button component={Link} to={page.path}>
+                        <ListItem button component={Link} to={page.path} onClick={onClick}>
                             <ListItemIcon>{page.icon()}</ListItemIcon>
                             <ListItemText primary={page.name} />
                         </ListItem>

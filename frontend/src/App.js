@@ -14,7 +14,7 @@ const theme = createTheme({
 });
 
 function App() {
-    const [isDrawerOpen, setIsDrawerOpen] = useState(true);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
     const toggleDrawer = () => {
         setIsDrawerOpen(!isDrawerOpen);
@@ -24,7 +24,7 @@ function App() {
         <ThemeProvider theme={theme}>
             <Router>
                 <TopAppBar onMenuClick={toggleDrawer} isDrawerOpen={isDrawerOpen} />
-                <MainContent isDrawerOpen={isDrawerOpen} drawerToggle={toggleDrawer} />
+                <MainContent isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
             </Router>
         </ThemeProvider>
     );

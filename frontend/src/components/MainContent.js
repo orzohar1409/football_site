@@ -13,7 +13,7 @@ const theme = createTheme({
     },
 });
 
-export default function MainContent({ isDrawerOpen, drawerToggle }) {
+export default function MainContent({ isDrawerOpen, toggleDrawer }) {
     const location = useLocation();
     const isGamePage = location.pathname === '/';
 
@@ -28,7 +28,7 @@ export default function MainContent({ isDrawerOpen, drawerToggle }) {
                 overflowX: 'hidden' // Prevent horizontal scroll on mobile
             }}
         >
-            <SideDrawer isOpen={isDrawerOpen} />
+            <SideDrawer isOpen={isDrawerOpen} onClick={toggleDrawer}/>
 
             {/* Main content area */}
             <Box
