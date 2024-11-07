@@ -50,7 +50,7 @@ export default function WelcomePage({onStartClick}) {
                 <Typography variant="body2" color="textSecondary">
                     Check my project on{' '}
                     <Link
-                        href="https://github.com/your-github-username"
+                        href="https://github.com/orzohar1409/football_site"
                         target="_blank"
                         rel="noopener noreferrer"
                         color="inherit"
