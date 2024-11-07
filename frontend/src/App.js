@@ -21,7 +21,7 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <Router>
-                <TopAppBar onMenuClick={toggleDrawer} />
+                <TopAppBar onMenuClick={toggleDrawer} isDrawerOpen={isDrawerOpen}/>
                 <MainContent isDrawerOpen={isDrawerOpen} />
             </Router>
         </ThemeProvider>
