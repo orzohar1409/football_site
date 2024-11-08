@@ -1,7 +1,6 @@
 // src/App.js
 import React, { useState } from 'react';
 import TopAppBar from './components/TopAppBar';
-import Footer from './components/Footer';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MainContent from './components/MainContent';

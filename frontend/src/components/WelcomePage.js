@@ -1,8 +1,5 @@
 import {Box, IconButton, Link, Slide, Typography} from "@mui/material";
 import React from "react";
-import StartIcon from '@mui/icons-material/Start';
-import {Email, SpaceBar} from "@mui/icons-material";
-import Footer from "./Footer";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 export default function WelcomePage({onStartClick}) {
