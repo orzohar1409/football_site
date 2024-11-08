@@ -4,11 +4,13 @@ const environment = process.env.REACT_APP_ENVIRONMENT || 'dev';
 console.log(`Loading configuration for environment: ${environment}`);
 // Import the correct configuration file based on environment
 let sharedConfig;
+let apiKey;
 try {
     if (environment === 'prod') {
-        sharedConfig = require('/etc/secrets/prod.json'); // Production config
+        sharedConfig = require('./prod.json'); // Production config
+        sharedConfig.API_KEY = process.env.REACT_APP_API_KEY;
     } else {
-        sharedConfig = require('./dev.json');  // Development config
+        sharedConfig = require('./dev.json');// Development config
     }
 } catch (error) {
     console.error(`Failed to load configuration for environment: ${environment}`, error);
