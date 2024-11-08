@@ -19,9 +19,9 @@ DAY_IN_SECONDS = 86400
 
 
 class CacheKeys(Enum):
-    LEAGUES = CacheKey('leagues', 10 * DAY_IN_SECONDS)
-    TEAMS = CacheKey('teams', 10 * DAY_IN_SECONDS)
-    GAMES = CacheKey('games', DAY_IN_SECONDS)
+    LEAGUES = CacheKey('leagues', 1000 * DAY_IN_SECONDS)
+    TEAMS = CacheKey('teams', 1000 * DAY_IN_SECONDS)
+    GAMES = CacheKey('games', 1000 * DAY_IN_SECONDS)
 
 
 class Config:
