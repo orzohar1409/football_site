@@ -2,7 +2,6 @@ import React from "react";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from "@mui/material";
 
 const cellStyles = {
-    fontWeight: 'bold',
     fontSize: { xs: '0.55rem', sm: '0.8rem' },
     padding: { xs: 0.5, sm: 1 }
 };
