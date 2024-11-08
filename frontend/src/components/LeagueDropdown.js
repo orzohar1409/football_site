@@ -7,14 +7,17 @@ import config from "../config";
 export default function LeagueDropdown({ onLeagueSelect }) {
     const [leagues, setLeagues] = useState([]);
     const [selectedLeague, setSelectedLeague] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         async function fetchLeagues() {
             try {
                 const response = await axios.get(config.API_GET_ALL_LEAGUES);
                 setLeagues(response.data);
+                setError(null); // Clear error if successful
             } catch (error) {
                 console.error('Error fetching leagues:', error);
+                setError('Failed to load leagues. Please try again later.');
             }
         }
         fetchLeagues();
