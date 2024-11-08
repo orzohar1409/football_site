@@ -18,15 +18,14 @@ const dropdownContainerStyles = {
     alignItems: 'center',
 };
 export default function SelectLeagueAndTeam({handleLeagueSelect, handleTeamSelect, selectedLeague}) {
-    return (<Slide direction="down" in={true} mountOnEnter unmountOnExit>
-        <Box sx={containerStyles}>
+    return (<Box sx={containerStyles}>
             <Typography variant="h5" gutterBottom>
                 Select League and Team
             </Typography>
-            <Box sx={dropdownContainerStyles}>
-                <LeagueDropdown onLeagueSelect={handleLeagueSelect}/>
+            <Box sx={dropdownConxtainerStyles}>
+                <LeagueDrxopdown onLeagueSelect={handleLeagueSelect}/>
                 <TeamDropdown selectedLeague={selectedLeague} onTeamSelect={handleTeamSelect}/>
             </Box>
-        </Box></Slide>
+        </Box>
     );
 }
