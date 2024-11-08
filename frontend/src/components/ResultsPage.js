@@ -1,4 +1,4 @@
-// src/YourTeamGames.js
+// src/ResultsPage.js
 import React, {useState, useEffect} from 'react';
 import {Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material';
 import axios from 'axios';
@@ -8,7 +8,7 @@ import GameTable from './GameTable';
 import SelectLeagueAndTeam from "./LeagueTeamSelect";
 import config from "../config";
 
-export default function YourTeamGames() {
+export default function ResultsPage() {
     const [selectedLeague, setSelectedLeague] = useState('');
     const [selectedTeam, setSelectedTeam] = useState('');
     const [games, setGames] = useState([]);

@@ -2,7 +2,7 @@ import { Home, AccountCircle } from '@mui/icons-material';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import SportsIcon from '@mui/icons-material/Sports';
 
-import YourTeamGames from './components/YourTeamGames';
+import ResultsPage from './components/ResultsPage';
 import ResumePage from './components/ResumePage';
 import WelcomePage from './components/WelcomePage';
 
@@ -16,7 +16,7 @@ export const appPages = [
     {
         name: "Results",
         path: "/results",
-        component: <YourTeamGames/>,
+        component: <ResultsPage/>,
         icon: () => <SportsIcon />,
     },
     {
