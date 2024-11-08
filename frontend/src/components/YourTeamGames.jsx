@@ -51,7 +51,7 @@ export default function YourTeamGames() {
             {showGames && (
                 <Box sx={{mt: 4}}>
                     <Typography variant="h6" gutterBottom>
-                        Upcoming Games
+                        Results
                     </Typography>
                     <GameTable games={games}/>
                 </Box>

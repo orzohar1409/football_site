@@ -6,13 +6,11 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MainContent from './components/MainContent';
 import './App.css';
+import {responsiveFontSizes} from "@mui/material";
 
-const theme = createTheme({
-    typography: {
-        fontFamily: 'Roboto, Arial, sans-serif',
-    },
-});
 
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 function App() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 

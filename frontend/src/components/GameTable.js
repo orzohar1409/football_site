@@ -9,7 +9,7 @@ const cellStyles = {
 
 export default function GameTable({ games }) {
     return (
-        <TableContainer component={Paper} sx={{ maxHeight: 250, overflowY: 'auto', width: '100%' }}>
+        <TableContainer component={Paper} sx={{ maxHeight: 500, overflowY: 'auto', width: '100%' }}>
             <Table stickyHeader>
                 <TableHead>
                     <TableRow>
