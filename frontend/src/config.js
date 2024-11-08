@@ -4,7 +4,6 @@ const environment = process.env.REACT_APP_ENVIRONMENT || 'dev';
 console.log(`Loading configuration for environment: ${environment}`);
 // Import the correct configuration file based on environment
 let sharedConfig;
-let apiKey;
 try {
     if (environment === 'prod') {
         sharedConfig = require('./prod.json'); // Production config
