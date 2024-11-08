@@ -1,49 +1,44 @@
 // src/App.js
 import React from 'react';
-import { Box } from '@mui/material';
+import {Box} from '@mui/material';
 
 import SideDrawer from './SideDrawer';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { createTheme } from '@mui/material/styles';
+import {Routes, Route, useLocation} from 'react-router-dom';
 import {appPages} from "../PagesConfig";
 
-const theme = createTheme({
-    typography: {
-        fontFamily: 'Roboto, Arial, sans-serif',
-    },
-});
-
-export default function MainContent({ isDrawerOpen, toggleDrawer }) {
+export default function MainContent({isDrawerOpen, toggleDrawer}) {
     const location = useLocation();
-    const isGamePage = location.pathname === '/';
 
+    const containerStyles = {
+        display: 'flex',
+        flexDirection: {xs: 'column', sm: 'row'},
+        marginTop: {xs: '56px', sm: '64px'},
+        minHeight: '100vh',
+        width: '100%',
+        overflowX: 'hidden',
+    };
+
+    const mainContentStyles = {
+        flexGrow: 1,
+        padding: 1,
+        transition: 'margin-left 0.3s ease',
+        marginLeft: isDrawerOpen ? '240px' : '0',
+        width: isDrawerOpen ? `calc(100% - 240px)` : '100%',
+    };
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', sm: 'row' }, // Column on mobile, row on larger screens
-                marginTop: { xs: '56px', sm: '64px' }, // Adjust top margin for mobile
-                minHeight: '100vh',
-                width: '100%',
-                overflowX: 'hidden' // Prevent horizontal scroll on mobile
-            }}
+        <Box component="div"
+             sx={containerStyles}
         >
             <SideDrawer isOpen={isDrawerOpen} onClick={toggleDrawer}/>
 
             {/* Main content area */}
             <Box
                 component="main"
-                sx={{
-                    flexGrow: 1,
-                    p: 1,
-                    transition: 'margin-left 0.3s ease', // Smooth transition for drawer effect
-                    marginLeft: isDrawerOpen ? '240px' : '0', // Adjust margin based on drawer state
-                    width: isDrawerOpen ? `calc(100% - 240px)` : '100%', // Shrink width when drawer is open
-                }}
+                sx={mainContentStyles}
             >
                 <Routes>
                     {appPages.map((page, index) => (
-                        <Route key={index} path={page.path} element={page.component} />
+                        <Route key={index} path={page.path} element={page.component}/>
                     ))}
                 </Routes>
             </Box>
