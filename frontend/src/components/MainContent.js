@@ -7,7 +7,6 @@ import {Routes, Route, useLocation} from 'react-router-dom';
 import {appPages} from "../PagesConfig";
 
 export default function MainContent({isDrawerOpen, toggleDrawer}) {
-    const location = useLocation();
 
     const containerStyles = {
         display: 'flex',
