@@ -22,8 +22,8 @@ export default function SelectLeagueAndTeam({handleLeagueSelect, handleTeamSelec
             <Typography variant="h5" gutterBottom>
                 Select League and Team
             </Typography>
-            <Box sx={dropdownConxtainerStyles}>
-                <LeagueDrxopdown onLeagueSelect={handleLeagueSelect}/>
+            <Box sx={dropdownContainerStyles}>
+                <LeagueDropdown onLeagueSelect={handleLeagueSelect}/>
                 <TeamDropdown selectedLeague={selectedLeague} onTeamSelect={handleTeamSelect}/>
             </Box>
         </Box>
