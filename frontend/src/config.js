@@ -6,7 +6,7 @@ console.log(`Loading configuration for environment: ${environment}`);
 let sharedConfig;
 try {
     if (environment === 'prod') {
-        sharedConfig = require('./prod.json'); // Production config
+        sharedConfig = require('/etc/secrets/prod.json'); // Production config
     } else {
         sharedConfig = require('./dev.json');  // Development config
     }
