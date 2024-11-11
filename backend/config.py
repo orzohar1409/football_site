@@ -22,6 +22,7 @@ class CacheKeys(Enum):
     LEAGUES = CacheKey('leagues', 1000 * DAY_IN_SECONDS)
     TEAMS = CacheKey('teams', 1000 * DAY_IN_SECONDS)
     GAMES = CacheKey('games', 1000 * DAY_IN_SECONDS)
+    VENUES = CacheKey('venues', 1000 * DAY_IN_SECONDS)
 
 
 class Config:

@@ -23,6 +23,7 @@ def filter_team_data(data):
         filtered_teams = []
         for item in data['response']:
             team = item.get('team')
+            venue = item.get('venue')
             if team:
                 filtered_teams.append({
                     "id": team["id"],
@@ -31,7 +32,8 @@ def filter_team_data(data):
                     "country": team["country"],
                     "founded": team["founded"],
                     "national": team["national"],
-                    "logo": team["logo"]
+                    "logo": team["logo"],
+                    "venue": venue
                 })
         return filtered_teams
     return []

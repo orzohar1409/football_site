@@ -3,39 +3,62 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Box } from '@mui/material';
+import config from "../config";
 
-export default function VenuesPage({ venues }) {
+export default function VenuesPage({ leagueId = 39}) {
     const [venueMarkers, setVenueMarkers] = useState([]);
 
     useEffect(() => {
-        async function fetchCoordinatesForVenues() {
-            const markers = await Promise.all(
-                venues.map(async (venue) => {
-                    const { street, city, country, name } = venue;
-                    try {
-                        const response = await fetch(
-                            `https://nominatim.openstreetmap.org/search?street=${encodeURIComponent(street)}&city=${encodeURIComponent(city)}&country=${encodeURIComponent(country)}&format=json`
-                        );
-                        const data = await response.json();
+        async function fetchVenues() {
+            try {
+                // Step 1: Fetch venues from your backend
+                const url = `${config.API_GET_VENUES}/${leagueId}`;
+                const response = await fetch(url);
+                const venues = await response.json();
 
-                        if (data && data.length > 0) {
-                            const { lat, lon } = data[0];
-                            return { name, lat: parseFloat(lat), lon: parseFloat(lon) };
-                        } else {
-                            console.error(`Location not found for ${name}`);
+                // Step 2: For each venue, get latitude and longitude from Nominatim
+                const markers = await Promise.all(
+                    venues.map(async (venue) => {
+                        const { address, city, country, name, image } = venue;
+                        const nominatimUrl = `https://nominatim.openstreetmap.org/search?street=${encodeURIComponent(address)}&city=${encodeURIComponent(city)}&format=json`;
+
+                        try {
+                            const nominatimResponse = await fetch(nominatimUrl);
+                            const data = await nominatimResponse.json();
+
+                            if (data && data.length > 0) {
+                                const { lat, lon } = data[0];
+                                return {
+                                    name,
+                                    address,
+                                    city,
+                                    country,
+                                    image,
+                                    lat: parseFloat(lat),
+                                    lon: parseFloat(lon),
+                                };
+                            } else {
+                                console.error(`Coordinates not found for venue: ${name}`);
+                                return null;
+                            }
+                        } catch (error) {
+                            console.error(`Error fetching coordinates for ${name}:`, error);
                             return null;
                         }
-                    } catch (error) {
-                        console.error(`Error fetching coordinates for ${name}:`, error);
-                        return null;
-                    }
-                })
-            );
-            setVenueMarkers(markers.filter(marker => marker !== null));
+                    })
+                );
+
+                // Filter out any null markers (venues without valid coordinates)
+                setVenueMarkers(markers.filter(marker => marker !== null));
+            } catch (error) {
+                console.error("Error fetching venues:", error);
+            }
         }
 
-        fetchCoordinatesForVenues();
-    }, [venues]);
+        if (leagueId) {
+            fetchVenues();
+        }
+    }, [leagueId]);
 
     return (
         <Box sx={{ height: '100vh', width: '100%' }}>
@@ -47,7 +70,10 @@ export default function VenuesPage({ venues }) {
                 {venueMarkers.map((marker, index) => (
                     <Marker key={index} position={[marker.lat, marker.lon]}>
                         <Popup>
-                            {marker.name}<br />{marker.city}, {marker.county}
+                            <strong>{marker.name}</strong><br />
+                            {marker.address}<br />
+                            {marker.city}, {marker.country}<br />
+                            <img src={marker.image} alt={`${marker.name} venue`} style={{ width: '100px', marginTop: '5px' }} />
                         </Popup>
                     </Marker>
                 ))}
