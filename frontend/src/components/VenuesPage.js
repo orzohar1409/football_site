@@ -37,7 +37,7 @@ export default function VenuesPage({ leagueId = 39 }) {
                 // Step 3: Fetch coordinates for each venue with a delay and update progress
                 const markers = [];
                 for (const venue of venues) {
-                    const { address, city, country, name, image, team_name } = venue;
+                    const { address, city, country, name, image, team_name, team_logo } = venue;
                     const nominatimUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(name)}&format=json`;
 
                     try {
@@ -53,6 +53,7 @@ export default function VenuesPage({ leagueId = 39 }) {
                                 country,
                                 image,
                                 team_name,
+                                team_logo,
                                 lat: parseFloat(lat),
                                 lon: parseFloat(lon),
                             });
@@ -100,7 +101,10 @@ export default function VenuesPage({ leagueId = 39 }) {
                     <Marker key={index} position={[marker.lat, marker.lon]} icon={createCustomIcon()}>
                         <Popup maxWidth={200}>
                             <strong>{marker.name}</strong><br />
-                            <em>{marker.team_name}</em><br />
+                            <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 1 }}>
+                                <img src={marker.team_logo} alt={`${marker.team_name} logo`} style={{ width: '20px', height: '20px', marginRight: '8px' }} />
+                                <strong>{marker.team_name}</strong> {/* Bold team name */}
+                            </Box>
                             {marker.address}<br />
                             {marker.city}, {marker.country}<br />
                             <img src={marker.image} alt={`${marker.name}`} style={{ width: '150px', marginTop: '5px' }} />
