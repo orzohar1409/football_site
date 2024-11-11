@@ -43,7 +43,9 @@ def get_venues_by_league_id(league_id):
     league_venues = []
     for team in teams:
         venue = team["venue"]
-        venue["country"] = team["country"]  # Append country to venue
+        venue["country"] = team["country"]# Append country to venue
+        venue["team_name"] = team["name"]
+        venue["team_logo"] = team["logo"]
         league_venues.append(venue)
 
     return league_venues
