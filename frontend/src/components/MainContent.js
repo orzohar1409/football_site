@@ -31,7 +31,7 @@ export default function MainContent({isDrawerOpen, toggleDrawer}) {
         <Box component="div"
              sx={containerStyles}
         >
-            <SideDrawer isOpen={isDrawerOpen} onClick={toggleDrawer}/>
+            <SideDrawer isOpen={isDrawerOpen} onPageClick={toggleDrawer}/>
 
             {/* Main content area */}
             <Box
