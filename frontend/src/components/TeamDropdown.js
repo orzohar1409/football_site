@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {Autocomplete, TextField, Avatar, Box} from '@mui/material';
 import axios from 'axios';
 import config from "../config";
+import {useAppContext} from "../AppContext";
 
 export default function TeamDropdown({selectedLeague, onTeamSelect}) {
-    const [teams, setTeams] = useState([]);
-    const [selectedTeam, setSelectedTeam] = useState(null);
-    const [error, setError] = useState(null);
+    const {teams, setTeams} = useAppContext();
+    const {selectedTeam, setSelectedTeam} = useAppContext();
+    const {error, setError} = useAppContext();
 
     useEffect(() => {
         if (selectedLeague) {

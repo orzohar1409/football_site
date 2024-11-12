@@ -30,14 +30,12 @@ function MapCenter({ center }) {
     return null;
 }
 export default function VenuesPage() {
-    const [leagueName, setLeagueName] = useState(''); // Track selected league name
     const [venueMarkers, setVenueMarkers] = useState([]);
     const [progress, setProgress] = useState(0);
     const [isFinished, setIsFinished] = useState(false);
     const mapCenter = venueMarkers.length > 0 ? [venueMarkers[0].lat, venueMarkers[0].lon] : [51.505, -0.09];
 
-    const{ selectedLeagueId, setSelectedLeagueId } = useAppContext();
-    const {selectedLeague, setSelectedLeague} = useAppContext();
+    const{ selectedLeagueId} = useAppContext();
     useEffect(() => {
         async function fetchVenues() {
             if (!selectedLeagueId) {
@@ -96,9 +94,7 @@ export default function VenuesPage() {
         fetchVenues();
     }, [selectedLeagueId]);
 
-    const handleLeagueChange = (newLeagueId, newLeagueName) => {
-        setSelectedLeagueId(newLeagueId);
-        setLeagueName(newLeagueName); // Set league name when changed
+    const handleLeagueChange = () => {
         setVenueMarkers([]);
         setProgress(0);
         setIsFinished(false);
@@ -111,7 +107,7 @@ export default function VenuesPage() {
                 </Typography>
 
             <Box sx={{ maxWidth: 500, width: '100%', padding: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <LeagueDropdown leagueId={selectedLeagueId} onLeagueSelect={handleLeagueChange} />
+                <LeagueDropdown onLeagueSelect={handleLeagueChange} />
                 {selectedLeagueId && progress < 100 && !isFinished && (
                     <Box sx={{ marginTop: 2 }}>
                         <Typography variant="body1">Fetching venues... {Math.round(progress)}% completed</Typography>

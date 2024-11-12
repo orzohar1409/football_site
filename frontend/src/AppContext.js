@@ -3,12 +3,12 @@ import React, { createContext, useContext, useState, useMemo } from 'react';
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-    const [selectedLeague, setSelectedLeague] = useState('');
+    const [selectedLeague, setSelectedLeague] = useState(null);
     const [selectedLeagueId, setSelectedLeagueId] = useState(null);
     const [allLeagues, setAllLeagues] = useState([]);
-    const [selectedTeam, setSelectedTeam] = useState('');
+    const [selectedTeam, setSelectedTeam] = useState(null);
     const [selectedTeamId, setSelectedTeamId] = useState(null);
-    const [allTeamsOfSelectedLeague, setAllTeamsOfSelectedLeague] = useState([]);
+    const [teams, setTeams] = useState([]);
     const [games, setGames] = useState([]);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [selectedGame, setSelectedGame] = useState(null);
@@ -27,11 +27,11 @@ export const AppProvider = ({ children }) => {
         selectedGame, setSelectedGame,
         toggleDrawer,
         allLeagues, setAllLeagues,
-        allTeamsOfSelectedLeague, setAllTeamsOfSelectedLeague,
+        teams, setTeams,
         error, setError
     }), [
         selectedLeague, selectedLeagueId, selectedTeam, selectedTeamId, games,
-        isDrawerOpen, selectedGame, allLeagues, allTeamsOfSelectedLeague, error
+        isDrawerOpen, selectedGame, allLeagues, teams, error
     ]);
 
     return (
