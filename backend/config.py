@@ -3,7 +3,7 @@ import os
 from enum import Enum
 
 # Load shared configuration from JSON
-env = os.getenv('ENVIRONMENT', 'dev')
+env = os.getenv('ENVIRONMENT', 'prod')
 config_path = os.path.join(os.path.dirname(__file__), f'../{env}.json')
 with open(config_path) as config_file:
     shared_config_data = json.load(config_file)
