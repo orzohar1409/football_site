@@ -21,7 +21,7 @@ export default function MainContent({isDrawerOpen, toggleDrawer}) {
         flexGrow: 1,
         padding: 1,
         transition: 'margin 0.3s ease',
-        marginLeft: isDrawerOpen ? '260px' : '20px',
+        marginLeft: isDrawerOpen ? '260px' : '5%',
         marginRight: '5%', // 10% from the right
         marginBottom: '10%', // 10% from the bottom
         width: isDrawerOpen ? `calc(80% - 240px)` : '80%', // Adjust width based on drawer state
