@@ -22,6 +22,6 @@ sharedConfig.API_MAIN_ENDPOINT = `${sharedConfig.API_BASE_URL}/${sharedConfig.AP
 sharedConfig.API_GET_ALL_LEAGUES = `${sharedConfig.API_MAIN_ENDPOINT}/${sharedConfig.API_LEAGUES_ENDPOINT}`;
 sharedConfig.API_GET_ALL_TEAMS = `${sharedConfig.API_MAIN_ENDPOINT}/${sharedConfig.API_TEAMS_ENDPOINT}`;
 sharedConfig.API_GET_ALL_GAMES = `${sharedConfig.API_MAIN_ENDPOINT}/${sharedConfig.API_GAMES_ENDPOINT}`;
-
+sharedConfig.API_GET_VENUES = `${sharedConfig.API_MAIN_ENDPOINT}/${sharedConfig.API_VENUES_ENDPOINT}`;
 // Export the entire configuration object
 export default sharedConfig;

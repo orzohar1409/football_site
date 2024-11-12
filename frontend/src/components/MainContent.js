@@ -20,15 +20,18 @@ export default function MainContent({isDrawerOpen, toggleDrawer}) {
     const mainContentStyles = {
         flexGrow: 1,
         padding: 1,
-        transition: 'margin-left 0.3s ease',
-        marginLeft: isDrawerOpen ? '240px' : '0',
-        width: isDrawerOpen ? `calc(100% - 240px)` : '100%',
+        transition: 'margin 0.3s ease',
+        marginLeft: isDrawerOpen ? '310px' : '5%',
+        marginRight: '5%', // 10% from the right
+        marginBottom: '10%', // 10% from the bottom
+        width: isDrawerOpen ? `calc(80% - 240px)` : '80%', // Adjust width based on drawer state
     };
+
     return (
         <Box component="div"
              sx={containerStyles}
         >
-            <SideDrawer isOpen={isDrawerOpen} onClick={toggleDrawer}/>
+            <SideDrawer isOpen={isDrawerOpen} onPageClick={toggleDrawer}/>
 
             {/* Main content area */}
             <Box

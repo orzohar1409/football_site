@@ -28,12 +28,14 @@ def filter_leagues(data):
     if 'response' in data and isinstance(data['response'], list):
         for item in data['response']:
             league = item.get('league')
+            country = item.get('country')
             if league and league.get('type') == 'League':
                 filtered_leagues.append({
                     "id": league["id"],
                     "name": league["name"],
                     "type": league["type"],
-                    "logo": league["logo"]
+                    "logo": league["logo"],
+                    "country": country["name"]
                 })
 
     return filtered_leagues
