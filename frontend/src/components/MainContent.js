@@ -5,9 +5,11 @@ import {Box} from '@mui/material';
 import SideDrawer from './SideDrawer';
 import {Routes, Route, useLocation} from 'react-router-dom';
 import {appPages} from "../PagesConfig";
+import {common} from "@mui/material/colors";
+import {useAppContext} from "../AppContext";
 
-export default function MainContent({isDrawerOpen, toggleDrawer}) {
-
+export default function MainContent() {
+    const {isDrawerOpen, toggleDrawer} = useAppContext();
     const containerStyles = {
         display: 'flex',
         flexDirection: {xs: 'column', sm: 'row'},
@@ -31,7 +33,7 @@ export default function MainContent({isDrawerOpen, toggleDrawer}) {
         <Box component="div"
              sx={containerStyles}
         >
-            <SideDrawer isOpen={isDrawerOpen} onPageClick={toggleDrawer}/>
+            <SideDrawer/>
 
             {/* Main content area */}
             <Box

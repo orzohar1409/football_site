@@ -3,17 +3,17 @@ import React, { useState, useEffect } from 'react';
 import { Autocomplete, TextField, Avatar, Box } from '@mui/material';
 import axios from 'axios';
 import config from "../config";
+import {useAppContext} from "../AppContext";
 
 export default function LeagueDropdown({ onLeagueSelect }) {
-    const [leagues, setLeagues] = useState([]);
-    const [selectedLeague, setSelectedLeague] = useState(null);
-    const [error, setError] = useState(null);
-
+    const {selectedLeague, setSelectedLeague} = useAppContext();
+    const {allLeagues, setAllLeagues} = useAppContext();
+    const {error, setError} = useAppContext();
     useEffect(() => {
         async function fetchLeagues() {
             try {
                 const response = await axios.get(config.API_GET_ALL_LEAGUES);
-                setLeagues(response.data);
+                setAllLeagues(response.data);
                 setError(null); // Clear error if successful
             } catch (error) {
                 console.error('Error fetching leagues:', error);
@@ -30,9 +30,9 @@ export default function LeagueDropdown({ onLeagueSelect }) {
 
     return (
         <Autocomplete
-            options={leagues}
+            options={allLeagues}
             getOptionLabel={(option) => option.name}
-            value={selectedLeague}
+            value={selectedLeague || null}
             onChange={handleLeagueChange}
             style={{ width: 300 }}
             isOptionEqualToValue={(option, value) => option.id === value?.id}

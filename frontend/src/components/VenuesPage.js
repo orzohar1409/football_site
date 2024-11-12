@@ -6,6 +6,7 @@ import config from "../config";
 import LeagueDropdown from './LeagueDropdown';
 import L from 'leaflet';
 import mapIcon from '../assets/flag_icon_264113.png';
+import {useAppContext} from "../AppContext";
 
 // Function to create a custom icon using the provided mapIcon
 export function createCustomIcon() {
@@ -29,20 +30,21 @@ function MapCenter({ center }) {
     return null;
 }
 export default function VenuesPage() {
-    const [leagueId, setLeagueId] = useState(null);
     const [leagueName, setLeagueName] = useState(''); // Track selected league name
     const [venueMarkers, setVenueMarkers] = useState([]);
     const [progress, setProgress] = useState(0);
     const [isFinished, setIsFinished] = useState(false);
     const mapCenter = venueMarkers.length > 0 ? [venueMarkers[0].lat, venueMarkers[0].lon] : [51.505, -0.09];
 
+    const{ selectedLeagueId, setSelectedLeagueId } = useAppContext();
+    const {selectedLeague, setSelectedLeague} = useAppContext();
     useEffect(() => {
         async function fetchVenues() {
-            if (!leagueId) {
+            if (!selectedLeagueId) {
                 return;
             }
             try {
-                const url = `${config.API_GET_VENUES}/${leagueId}`;
+                const url = `${config.API_GET_VENUES}/${selectedLeagueId}`;
                 const response = await fetch(url);
                 const venues = await response.json();
 
@@ -92,10 +94,10 @@ export default function VenuesPage() {
         }
 
         fetchVenues();
-    }, [leagueId]);
+    }, [selectedLeagueId]);
 
     const handleLeagueChange = (newLeagueId, newLeagueName) => {
-        setLeagueId(newLeagueId);
+        setSelectedLeagueId(newLeagueId);
         setLeagueName(newLeagueName); // Set league name when changed
         setVenueMarkers([]);
         setProgress(0);
@@ -109,8 +111,8 @@ export default function VenuesPage() {
                 </Typography>
 
             <Box sx={{ maxWidth: 500, width: '100%', padding: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <LeagueDropdown leagueId={leagueId} onLeagueSelect={handleLeagueChange} />
-                {leagueId && progress < 100 && !isFinished && (
+                <LeagueDropdown leagueId={selectedLeagueId} onLeagueSelect={handleLeagueChange} />
+                {selectedLeagueId && progress < 100 && !isFinished && (
                     <Box sx={{ marginTop: 2 }}>
                         <Typography variant="body1">Fetching venues... {Math.round(progress)}% completed</Typography>
                         <LinearProgress variant="determinate" value={progress} />
