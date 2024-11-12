@@ -4,7 +4,7 @@ import { Drawer, List, ListItem, ListItemIcon, ListItemText, Divider } from '@mu
 import { Link } from 'react-router-dom';
 import { appPages } from '../PagesConfig'; // Import your configuration file
 
-export default function SideDrawer({ isOpen, onPageClick }) {
+export default function SideDrawer({ isOpen,onPageClick }) {
     const drawerStyles = {
         flexShrink: 0,
         '& .MuiDrawer-paper': {

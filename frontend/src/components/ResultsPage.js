@@ -5,6 +5,7 @@ import axios from 'axios';
 import GameTable from './GameTable';
 import SelectLeagueAndTeam from "./LeagueTeamSelect";
 import config from "../config";
+import ResWidget from "./ResWidget";
 
 const getGamesUrl = (leagueId, teamId) => `${config.API_GET_ALL_GAMES}/${leagueId}/${teamId}`;
 
