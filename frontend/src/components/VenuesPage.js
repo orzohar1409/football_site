@@ -6,7 +6,7 @@ import config from "../config";
 import LeagueDropdown from './LeagueDropdown';
 import L from 'leaflet';
 import mapIcon from '../assets/flag_icon_264113.png';
-import {useAppContext} from "../AppContext";
+import { useAppContext } from "../AppContext";
 
 // Function to create a custom icon using the provided mapIcon
 export function createCustomIcon() {
@@ -29,21 +29,25 @@ function MapCenter({ center }) {
     }, [center, map]);
     return null;
 }
+
 export default function VenuesPage() {
     const [venueMarkers, setVenueMarkers] = useState([]);
     const [progress, setProgress] = useState(0);
     const [isFinished, setIsFinished] = useState(false);
     const mapCenter = venueMarkers.length > 0 ? [venueMarkers[0].lat, venueMarkers[0].lon] : [51.505, -0.09];
+    const { selectedLeagueId } = useAppContext();
+    const [abortController, setAbortController] = useState(null); // Add state to store the abort controller
 
-    const{ selectedLeagueId} = useAppContext();
     useEffect(() => {
+
+
         async function fetchVenues() {
-            if (!selectedLeagueId) {
-                return;
-            }
+            if (!selectedLeagueId) return;
+            const controller = new AbortController(); // Create a new AbortController
+            setAbortController(controller); // Store the current controller in state
             try {
                 const url = `${config.API_GET_VENUES}/${selectedLeagueId}`;
-                const response = await fetch(url);
+                const response = await fetch(url, { signal: controller.signal });
                 const venues = await response.json();
 
                 const totalVenues = venues.length;
@@ -51,11 +55,11 @@ export default function VenuesPage() {
                 const markers = [];
 
                 for (const venue of venues) {
-                    const { address, city, country, name, image, team_name, team_logo } = venue;
+                    const { name, address, city, country, image, team_name, team_logo } = venue;
                     const nominatimUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(name)}&format=json`;
 
                     try {
-                        const nominatimResponse = await fetch(nominatimUrl);
+                        const nominatimResponse = await fetch(nominatimUrl, { signal: controller.signal });
                         const data = await nominatimResponse.json();
 
                         if (data && data.length > 0) {
@@ -75,37 +79,52 @@ export default function VenuesPage() {
                             console.error(`Coordinates not found for venue: ${name}`);
                         }
                     } catch (error) {
+                        if (error.name === 'AbortError') {
+                            console.log(`Fetch aborted for venue: ${name}`);
+                            return;
+                        }
                         console.error(`Error fetching coordinates for ${name}:`, error);
                     }
 
                     fetchedVenues += 1;
                     setProgress((fetchedVenues / totalVenues) * 100);
-
                     await new Promise(resolve => setTimeout(resolve, 1000));
                 }
 
                 setVenueMarkers(markers);
                 setIsFinished(true);
             } catch (error) {
+                if (error.name === 'AbortError') {
+                    console.log('Fetch aborted');
+                    return;
+                }
                 console.error("Error fetching venues:", error);
             }
         }
 
         fetchVenues();
+
+        return () => {
+            setAbortController(null); // Reset the controller
+            setProgress(0); // Reset progress to show aborted state
+        };
     }, [selectedLeagueId]);
 
     const handleLeagueChange = () => {
+        if(abortController) {
+            abortController.abort();
+            setAbortController(null);
+        }
         setVenueMarkers([]);
         setProgress(0);
         setIsFinished(false);
     };
 
     return (
-        <Box sx={{ height: '70vh', width: '100%'}}>
-                <Typography variant="h6" sx={{ padding: 2 }}>
-                    Select a league to see its venues!
-                </Typography>
-
+        <Box sx={{ height: '70vh', width: '100%' }}>
+            <Typography variant="h6" sx={{ padding: 2 }}>
+                Select a league to see its venues!
+            </Typography>
             <Box sx={{ maxWidth: 500, width: '100%', padding: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <LeagueDropdown onLeagueSelect={handleLeagueChange} />
                 {selectedLeagueId && progress < 100 && !isFinished && (

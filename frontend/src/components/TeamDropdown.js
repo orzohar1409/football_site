@@ -7,7 +7,6 @@ import {useAppContext} from "../AppContext";
 export default function TeamDropdown({onTeamSelect}) {
     const {teams, setTeams} = useAppContext();
     const {selectedTeam, setSelectedTeam} = useAppContext();
-    const {error, setError} = useAppContext();
     const {selectedLeagueId} = useAppContext();
     useEffect(() => {
         if (selectedLeagueId) {
@@ -16,10 +15,8 @@ export default function TeamDropdown({onTeamSelect}) {
                     const response = await axios.get(`${config.API_GET_ALL_TEAMS}/${selectedLeagueId}`);
                     setTeams(response.data);
                     setSelectedTeam(null);
-                    setError(null); // Clear error if successful
                 } catch (error) {
                     console.error('Error fetching teams:', error);
-                    setError('Failed to load teams. Please try again later.');
                 }
             }
 
