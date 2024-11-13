@@ -57,7 +57,7 @@ export default function LeagueDropdown({ onLeagueSelect }) {
                 />
             )}
             renderOption={(props, option) => (
-                <Box component="li" {...props} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Box component="li" {...props} sx={{ display: 'flex', alignItems: 'center' }} key={option.id}>
                     <Avatar
                         src={option.logo}
                         alt={`${option.name} logo`}

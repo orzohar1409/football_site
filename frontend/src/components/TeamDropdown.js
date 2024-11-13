@@ -4,16 +4,16 @@ import axios from 'axios';
 import config from "../config";
 import {useAppContext} from "../AppContext";
 
-export default function TeamDropdown({selectedLeague, onTeamSelect}) {
+export default function TeamDropdown({onTeamSelect}) {
     const {teams, setTeams} = useAppContext();
     const {selectedTeam, setSelectedTeam} = useAppContext();
     const {error, setError} = useAppContext();
-
+    const {selectedLeagueId} = useAppContext();
     useEffect(() => {
-        if (selectedLeague) {
+        if (selectedLeagueId) {
             async function fetchTeams() {
                 try {
-                    const response = await axios.get(`${config.API_GET_ALL_TEAMS}/${selectedLeague}`);
+                    const response = await axios.get(`${config.API_GET_ALL_TEAMS}/${selectedLeagueId}`);
                     setTeams(response.data);
                     setSelectedTeam(null);
                     setError(null); // Clear error if successful
@@ -28,11 +28,11 @@ export default function TeamDropdown({selectedLeague, onTeamSelect}) {
             setTeams([]);
             setSelectedTeam(null);
         }
-    }, [selectedLeague]);
+    }, [selectedLeagueId]);
 
     const handleTeamChange = (event, newTeam) => {
         setSelectedTeam(newTeam);
-        onTeamSelect(newTeam ? newTeam.id : null);
+        onTeamSelect();
     };
 
     return (
@@ -62,7 +62,7 @@ export default function TeamDropdown({selectedLeague, onTeamSelect}) {
                 />
             )}
             renderOption={(props, option) => (
-                <Box component="li" {...props} sx={{display: 'flex', alignItems: 'center'}}>
+                <Box component="li" {...props} sx={{display: 'flex', alignItems: 'center'}} key={option.id}>
                     <Avatar
                         src={option.logo}
                         alt={`${option.name} logo`}
