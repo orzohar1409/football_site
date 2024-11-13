@@ -3,8 +3,9 @@ import React from 'react';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText, Divider } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { appPages } from '../PagesConfig'; // Import your configuration file
-
-export default function SideDrawer({ isOpen,onPageClick }) {
+import { useAppContext } from '../AppContext'; // Import your context hook
+export default function SideDrawer() {
+    const { isDrawerOpen, toggleDrawer } = useAppContext();
     const drawerStyles = {
         flexShrink: 0,
         '& .MuiDrawer-paper': {
@@ -34,7 +35,7 @@ export default function SideDrawer({ isOpen,onPageClick }) {
         <Drawer
             variant="persistent"
             anchor="left"
-            open={isOpen}
+            open={isDrawerOpen}
             sx={drawerStyles}
         >
             <List
@@ -42,7 +43,7 @@ export default function SideDrawer({ isOpen,onPageClick }) {
             >
                 {appPages.map((page, index) => (
                     <React.Fragment key={index}>
-                        <ListItem button component={Link} to={page.path} onClick={onPageClick}>
+                        <ListItem button component={Link} to={page.path} onClick={toggleDrawer}>
                             <ListItemIcon aria-hidden="true">{page.icon()}</ListItemIcon>
                             <ListItemText primary={page.name} />
                         </ListItem>

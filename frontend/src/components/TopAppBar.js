@@ -4,8 +4,10 @@ import {AppBar, Toolbar, Typography, IconButton, Box} from "@mui/material";
 import DehazeOutlinedIcon from '@mui/icons-material/DehazeOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import logo from '../assets/logo.png';
+import {useAppContext} from "../AppContext";
 
-export default function TopAppBar({onMenuClick, isDrawerOpen}) {
+export default function TopAppBar() {
+    const {toggleDrawer, isDrawerOpen} = useAppContext();
     const appBarStyles = {
         height: 64,
         zIndex: (theme) => theme.zIndex.drawer + 1,
@@ -25,7 +27,7 @@ export default function TopAppBar({onMenuClick, isDrawerOpen}) {
                     edge="start"
                     color="inherit"
                     aria-label={isDrawerOpen ? "close menu" : "open menu"}
-                    onClick={onMenuClick}
+                    onClick={toggleDrawer}
                 >
                     {isDrawerOpen ? <CloseIcon /> : <DehazeOutlinedIcon />}
                 </IconButton>

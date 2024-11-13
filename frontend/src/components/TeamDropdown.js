@@ -2,23 +2,21 @@ import React, {useState, useEffect} from 'react';
 import {Autocomplete, TextField, Avatar, Box} from '@mui/material';
 import axios from 'axios';
 import config from "../config";
+import {useAppContext} from "../AppContext";
 
-export default function TeamDropdown({selectedLeague, onTeamSelect}) {
-    const [teams, setTeams] = useState([]);
-    const [selectedTeam, setSelectedTeam] = useState(null);
-    const [error, setError] = useState(null);
-
+export default function TeamDropdown({onTeamSelect}) {
+    const {teams, setTeams} = useAppContext();
+    const {selectedTeam, setSelectedTeam} = useAppContext();
+    const {selectedLeagueId} = useAppContext();
     useEffect(() => {
-        if (selectedLeague) {
+        if (selectedLeagueId) {
             async function fetchTeams() {
                 try {
-                    const response = await axios.get(`${config.API_GET_ALL_TEAMS}/${selectedLeague}`);
+                    const response = await axios.get(`${config.API_GET_ALL_TEAMS}/${selectedLeagueId}`);
                     setTeams(response.data);
                     setSelectedTeam(null);
-                    setError(null); // Clear error if successful
                 } catch (error) {
                     console.error('Error fetching teams:', error);
-                    setError('Failed to load teams. Please try again later.');
                 }
             }
 
@@ -27,11 +25,11 @@ export default function TeamDropdown({selectedLeague, onTeamSelect}) {
             setTeams([]);
             setSelectedTeam(null);
         }
-    }, [selectedLeague]);
+    }, [selectedLeagueId]);
 
     const handleTeamChange = (event, newTeam) => {
         setSelectedTeam(newTeam);
-        onTeamSelect(newTeam ? newTeam.id : null);
+        onTeamSelect();
     };
 
     return (
@@ -61,7 +59,7 @@ export default function TeamDropdown({selectedLeague, onTeamSelect}) {
                 />
             )}
             renderOption={(props, option) => (
-                <Box component="li" {...props} sx={{display: 'flex', alignItems: 'center'}}>
+                <Box component="li" {...props} sx={{display: 'flex', alignItems: 'center'}} key={option.id}>
                     <Avatar
                         src={option.logo}
                         alt={`${option.name} logo`}
