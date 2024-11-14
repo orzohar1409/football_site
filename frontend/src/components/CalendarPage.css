@@ -1,0 +1,25 @@
+/* CalendarPage.css */
+
+/* Style for the event container */
+.rbc-event {
+    font-size: 0.9rem;         /* Customize font size */
+    font-weight: bold;         /* Customize font weight */
+    padding: 4px;              /* Adjust padding for better spacing */
+    color: white;              /* Text color */
+    background-color: #c019d2; /* Use a primary color */
+    border-radius: 4px;        /* Rounded corners */
+    border: none;              /* Remove default border */
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+}
+
+/* Optional: Smaller font for event time labels */
+.rbc-event-label {
+    font-size: 0.8rem;
+    color: #555;               /* Adjust label color */
+}
+
+/* Additional customizations for selected and hovered events */
+.rbc-event:hover {
+    background-color: #b0bccc; /* Darker background on hover */
+    cursor: pointer;           /* Pointer cursor on hover */
+}

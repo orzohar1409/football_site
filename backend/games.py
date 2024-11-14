@@ -21,6 +21,7 @@ def parse_game_data(data):
         goals = match["goals"]
 
         game = {
+            "id": fixture["id"],
             "date": fixture["date"],
             "home_team": {
                 "name": teams["home"]["name"],

@@ -8,13 +8,12 @@ const containerStyles = {
     transform: 'translateY(0)',
     opacity: 1,
     transition: 'transform 2s ease, opacity 1s ease',
-    mb: 1,
     height: '120px',
 };
 
 const dropdownContainerStyles = {
     display: 'flex',
-    gap: 2,
+    gap: 1,
     alignItems: 'center',
 };
 export default function SelectLeagueAndTeam({handleLeagueSelect, handleTeamSelect, selectedLeague}) {

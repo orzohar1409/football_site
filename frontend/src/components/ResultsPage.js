@@ -5,26 +5,23 @@ import axios from 'axios';
 import GameTable from './GameTable';
 import SelectLeagueAndTeam from "./LeagueTeamSelect";
 import config from "../config";
-import ResWidget from "./ResWidget";
-
+import GameWidget from "./GameWidget";
+import { useAppContext } from "../AppContext";
 const getGamesUrl = (leagueId, teamId) => `${config.API_GET_ALL_GAMES}/${leagueId}/${teamId}`;
 
 export default function ResultsPage() {
-    const [selectedLeague, setSelectedLeague] = useState('');
-    const [selectedTeam, setSelectedTeam] = useState('');
+    const {selectedLeague} = useAppContext();
+    const {selectedTeam} = useAppContext();
     const [games, setGames] = useState([]);
     const [showGames, setShowGames] = useState(false);
     const [error, setError] = useState(null);
 
 
-    const handleLeagueSelect = (leagueId) => {
-        setSelectedLeague(leagueId);
-        setSelectedTeam('');
+    const handleLeagueSelect = () => {
         setShowGames(false);
     };
 
-    const handleTeamSelect = (teamId) => {
-        setSelectedTeam(teamId);
+    const handleTeamSelect = () => {
         setShowGames(true);
     };
 
@@ -32,7 +29,7 @@ export default function ResultsPage() {
         if (selectedTeam) {
             async function fetchGames() {
                 try {
-                    const response = await axios.get(getGamesUrl(selectedLeague, selectedTeam));
+                    const response = await axios.get(getGamesUrl(selectedLeague.id, selectedTeam.id));
                     setGames(response.data);
                     setError(null); // Clear error if successful
                 } catch (error) {
