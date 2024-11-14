@@ -38,7 +38,7 @@ export default function TeamDropdown({onTeamSelect}) {
             getOptionLabel={(option) => option.name}
             value={selectedTeam}
             onChange={handleTeamChange}
-            style={{width: 300}}
+            style={{ width: 200 }}
             isOptionEqualToValue={(option, value) => option.id === value?.id}
             renderInput={(params) => (
                 <TextField
@@ -55,6 +55,11 @@ export default function TeamDropdown({onTeamSelect}) {
                                 sx={{width: 20, height: 20, marginRight: 1}}
                             />
                         ) : null,
+                        endAdornment: (
+                            <Box sx={{ '& svg': { fontSize: 16 }, '& button': { fontSize: 16 } }}>
+                                {params.InputProps.endAdornment}
+                            </Box>
+                        ),
                     }}
                 />
             )}

@@ -115,7 +115,7 @@ export default function CalendarPage() {
                     handleTeamSelect={() => {}}
                     selectedLeague={selectedLeague}
                 />
-                <Button variant="contained" endIcon={<SendIcon />} onClick={handleTeamSelect}>
+                <Button variant="contained" endIcon={<SendIcon />} onClick={handleTeamSelect} sx={{mb:2}}>
                     Add
                 </Button>
             </Box>
