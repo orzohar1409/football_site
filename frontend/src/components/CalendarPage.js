@@ -87,7 +87,9 @@ export default function CalendarPage() {
         setSelectedTeams(selectedTeams.filter(team => team.id !== teamToRemove.id));
         setEvents(events.filter(event => event.teamId !== teamToRemove.id));
     };
-
+    const handleLeagueSelect = () => {
+        // No action needed; preserve selected teams and events
+    };
     // Custom event styling based on team color
     const eventPropGetter = (event) => ({
         style: {
@@ -106,7 +108,7 @@ export default function CalendarPage() {
             </Typography>
 
             <SelectLeagueAndTeam
-                handleLeagueSelect={() => setEvents([])}
+                handleLeagueSelect={handleLeagueSelect}
                 handleTeamSelect={handleTeamSelect}
                 selectedLeague={selectedLeague}
             />
