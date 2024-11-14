@@ -1,15 +1,17 @@
 // src/pages/CalendarPage.js
 
-import React, { useState, useEffect } from 'react';
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
-import { format, parse, startOfWeek, getDay } from 'date-fns';
+import React, {useState, useEffect} from 'react';
+import {Calendar, dateFnsLocalizer} from 'react-big-calendar';
+import {format, parse, startOfWeek, getDay} from 'date-fns';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { Box, Typography, CircularProgress } from '@mui/material';
+import {Box, Typography, CircularProgress} from '@mui/material';
 import SelectLeagueAndTeam from '../components/LeagueTeamSelect';
 import TeamSelectWithChips from '../components/TeamSelectWithChips';
 import axios from 'axios';
 import config from "../config";
-import { useAppContext } from "../AppContext";
+import {useAppContext} from "../AppContext";
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
 
 const locales = {
     'en-US': require('date-fns/locale/en-US'),
@@ -32,7 +34,7 @@ const colors = [
 const getGamesUrl = (leagueId, teamId) => `${config.API_GET_ALL_GAMES}/${leagueId}/${teamId}`;
 
 export default function CalendarPage() {
-    const { selectedLeague, selectedTeam } = useAppContext();
+    const {selectedLeague, selectedTeam} = useAppContext();
     const [selectedTeams, setSelectedTeams] = useState([]);
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -102,17 +104,21 @@ export default function CalendarPage() {
     });
 
     return (
-        <Box sx={{ padding: 3 }}>
-            <Typography variant="h4" gutterBottom>
-                Calendar Page
-            </Typography>
-
-            <SelectLeagueAndTeam
-                handleLeagueSelect={handleLeagueSelect}
-                handleTeamSelect={handleTeamSelect}
-                selectedLeague={selectedLeague}
-            />
-
+        <Box sx={{padding: 3}}>
+            <Box sx={{
+                display: 'flex',
+                gap: 2,
+                alignItems: 'center',
+            }}>
+                <SelectLeagueAndTeam
+                    handleLeagueSelect={handleLeagueSelect}
+                    handleTeamSelect={() => {}}
+                    selectedLeague={selectedLeague}
+                />
+                <Button variant="contained" endIcon={<SendIcon />} onClick={handleTeamSelect}>
+                    Add
+                </Button>
+            </Box>
             {/* Display selected teams as chips */}
             <TeamSelectWithChips
                 selectedTeams={selectedTeams}
@@ -121,7 +127,7 @@ export default function CalendarPage() {
 
             {error && <Typography color="error" variant="body2">{error}</Typography>}
 
-            {loading && <CircularProgress />}
+            {loading && <CircularProgress/>}
 
             {/* Calendar with events and custom styling */}
             {!loading && (
@@ -130,7 +136,7 @@ export default function CalendarPage() {
                     events={events}
                     startAccessor="start"
                     endAccessor="end"
-                    style={{ height: 500, marginTop: 20 }}
+                    style={{height: 500, marginTop: 20}}
                     defaultView="month"
                     defaultDate={new Date(2022, 8, 1)}
                     eventPropGetter={eventPropGetter} // Apply color to calendar events
