@@ -1,5 +1,5 @@
 // src/App.js
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Box} from '@mui/material';
 
 import SideDrawer from './SideDrawer';
@@ -10,6 +10,8 @@ import {useAppContext} from "../AppContext";
 
 export default function MainContent() {
     const {isDrawerOpen, toggleDrawer} = useAppContext();
+    const location = useLocation();
+
     const containerStyles = {
         display: 'flex',
         flexDirection: {xs: 'column', sm: 'row'},
@@ -29,6 +31,9 @@ export default function MainContent() {
         width: isDrawerOpen ? `calc(80% - 240px)` : '80%', // Adjust width based on drawer state
     };
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location.pathname]);
     return (
         <Box component="div"
              sx={containerStyles}
