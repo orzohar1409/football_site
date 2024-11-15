@@ -47,7 +47,7 @@ export default function ResultsPage() {
     }, [selectedTeam, selectedLeague]);
 
     return (
-        <Box sx={{ padding: 1 }}>
+        <Box sx={{ padding: 0 }}>
             <SelectLeagueAndTeam
                 handleLeagueSelect={handleLeagueSelect}
                 handleTeamSelect={handleTeamSelect}

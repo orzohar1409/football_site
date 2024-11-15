@@ -5,7 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import logo from '../assets/logo.png';
 import { useAppContext } from "../AppContext";
 import { useLocation } from "react-router-dom";
-import { appPages } from "../PagesConfig"; // Ensure this is the correct path to your appPages
+import { appPages } from "../PagesConfig";
 
 export default function TopAppBar() {
     const { toggleDrawer, isDrawerOpen } = useAppContext();
@@ -26,26 +26,36 @@ export default function TopAppBar() {
     // Find the page object matching the current path
     const currentPage = appPages.find(page => page.path.toLowerCase() === location.pathname.toLowerCase());
     let currentTitle = currentPage ? currentPage.name : "Page Not Found";
-    if(currentTitle === "Calendar"){
-        currentTitle = "Calendar - better tilted!";
+    if (currentTitle === "Calendar") {
+        currentTitle = "Calendar - rotate for better view!";
     }
 
     return (
         <AppBar position="fixed" sx={appBarStyles}>
             <Toolbar>
-                <IconButton
-                    edge="start"
-                    color="inherit"
-                    aria-label={isDrawerOpen ? "close menu" : "open menu"}
-                    onClick={toggleDrawer}
-                >
-                    {isDrawerOpen ? <CloseIcon /> : <DehazeOutlinedIcon />}
-                </IconButton>
+                {/* Left Section: Icon and Ballon d'Or */}
+                <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 0 }}>
+                    <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label={isDrawerOpen ? "close menu" : "open menu"}
+                        onClick={toggleDrawer}
+                    >
+                        {isDrawerOpen ? <CloseIcon /> : <DehazeOutlinedIcon />}
+                    </IconButton>
+                    <Typography variant="h6" sx={{ ml: 1 }}>
+                        Ballon d'Or
+                    </Typography>
+                </Box>
+
+                {/* Center Section: Page Title */}
                 <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
                     <Typography variant="h6" align="center">
                         {currentTitle}
                     </Typography>
                 </Box>
+
+                {/* Right Section: Logo */}
                 <Box component="img" src={logo} sx={logoStyles} />
             </Toolbar>
         </AppBar>

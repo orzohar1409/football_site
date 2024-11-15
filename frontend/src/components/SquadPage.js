@@ -53,7 +53,7 @@ export default function SquadPage() {
                     <Divider sx={{ marginY: 2 }} />
                     <Grid container spacing={4}>
                         {players.map((player) => (
-                            <Grid item key={player.id} xs={3.5} sm={2} md={2}>
+                            <Grid item key={player.id} xs={6} sm={2} md={2}>
                                 <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                                     <CardMedia
                                         component="img"
@@ -67,7 +67,8 @@ export default function SquadPage() {
                                             {player.name}
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
-                                            Age: {player.age} | Position: {player.position} |
+                                            Age: {player.age} <br/>
+                                            Position: {player.position} <br/>
                                             Number: {player.number || 'N/A'}
                                         </Typography>
                                     </CardContent>

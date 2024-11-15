@@ -124,7 +124,7 @@ export default function CalendarPage() {
                     selectedLeague={selectedLeague}
                 />
                 <Button variant="contained" endIcon={<SendIcon />} onClick={handleTeamSelect} sx={{mb:2}}>
-                    Add
+                    Add to calendar
                 </Button>
             </Box>
             {/* Display selected teams as chips */}

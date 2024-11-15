@@ -42,7 +42,7 @@ export const appPages = [
         icon: () => <GroupsIcon />,
     },
     {
-        name: "About me",
+        name: "About Or Zohar",
         path: "/resume",
         component: <ResumePage/>,
         icon: () => <AccountCircle />,

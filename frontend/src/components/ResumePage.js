@@ -157,6 +157,7 @@ export default function ResumePage() {
                             <Typography variant="body2">
                                 • Intro to System Programming – 92 <br />
                                 • Computer Organization and Programming – 88 <br />
+                                • Digital Systems and Computer Structure – 89 <br />
                                 • Psychometric Score – 752
                             </Typography>
                         </Grid>
