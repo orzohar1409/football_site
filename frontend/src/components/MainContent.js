@@ -32,6 +32,7 @@ export default function MainContent() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.body.style.zoom = "80%"; // Ensures zoom level is set to 100%
     }, [location.pathname]);
     return (
         <Box component="div"
