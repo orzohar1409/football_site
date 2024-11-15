@@ -7,6 +7,6 @@
     "API_LEAGUES_ENDPOINT": "league",
     "API_TEAMS_ENDPOINT": "teams",
     "API_GAMES_ENDPOINT": "games",
-    "API_VENUES_ENDPOINT": "venues"
-
+    "API_VENUES_ENDPOINT": "venues",
+    "API_SQUADS_ENDPOINT": "squads"
 }

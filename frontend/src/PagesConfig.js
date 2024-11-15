@@ -1,6 +1,7 @@
 import { Home, AccountCircle } from '@mui/icons-material';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import SportsIcon from '@mui/icons-material/Sports';
+import GroupsIcon from '@mui/icons-material/Groups';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 import ResultsPage from './components/ResultsPage';
@@ -32,6 +33,12 @@ export const appPages = [
         path: "/calendar",
         component: <CalendarPage/>,
         icon: () => <CalendarTodayIcon />,
+    },
+    {
+        name:"Squads",
+        path: "/Squads",
+        component: <SquadsPage/>,
+        icon: () => <GroupsIcon />,
     },
     {
         name: "About me",
