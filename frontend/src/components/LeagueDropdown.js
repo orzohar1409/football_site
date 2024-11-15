@@ -36,25 +36,26 @@ export default function LeagueDropdown({ onLeagueSelect }) {
             getOptionLabel={(option) => option.name}
             value={selectedLeague || null}
             onChange={handleLeagueChange}
-            style={{ width: 200 }}
+            style={{ width: "100%" }}
             isOptionEqualToValue={(option, value) => option.id === value?.id}
             renderInput={(params) => (
                 <TextField
                     {...params}
                     label="Select League"
                     variant="outlined"
-                    size="medium"
+                    size="small"
+                    sx={{ width: "100%" }}
                     InputProps={{
                         ...params.InputProps,
                         startAdornment: selectedLeague ? (
                             <Avatar
                                 src={selectedLeague.logo}
                                 alt={selectedLeague.name}
-                                sx={{ width: 20, height: 20, marginRight: 0.2 }}
+                                sx={{ width: 20, height: 20, marginRight: 0.2, fontSize:5 }}
                             />
                         ) : null,
                         endAdornment: (
-                            <Box sx={{ '& svg': { fontSize: 16 }, '& button': { fontSize: 16 } }}>
+                            <Box sx={{ '& svg': { fontSize: 14 }, '& button': { fontSize: 14 } }}>
                                 {params.InputProps.endAdornment}
                             </Box>
                         ),

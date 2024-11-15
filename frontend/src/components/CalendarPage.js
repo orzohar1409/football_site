@@ -108,7 +108,8 @@ export default function CalendarPage() {
             <Box sx={{
                 display: 'flex',
                 gap: 2,
-                alignItems: 'center',
+                alignItems: 'flex-end', // Align elements to the bottom
+                flexWrap: 'wrap', // Allow wrapping for responsiveness
             }}>
                 <SelectLeagueAndTeam
                     handleLeagueSelect={handleLeagueSelect}

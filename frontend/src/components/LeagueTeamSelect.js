@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Slide, Typography} from '@mui/material';
+import {Box, Divider, Slide, Typography} from '@mui/material';
 import LeagueDropdown from './LeagueDropdown';
 import TeamDropdown from './TeamDropdown';
 
@@ -9,18 +9,19 @@ const containerStyles = {
     opacity: 1,
     transition: 'transform 2s ease, opacity 1s ease',
     height: '120px',
+    width:"100%",
 };
 
 const dropdownContainerStyles = {
     display: 'flex',
     gap: 1,
     alignItems: 'center',
+    marginTop:1,
+    flexDirection: { xs: 'column', sm: 'row' }, // Stacks vertically on small screens
+
 };
 export default function SelectLeagueAndTeam({handleLeagueSelect, handleTeamSelect, selectedLeague}) {
     return (<Box sx={containerStyles}>
-            <Typography variant="h5" gutterBottom>
-                Select League and Team
-            </Typography>
             <Box sx={dropdownContainerStyles}>
                 <LeagueDropdown onLeagueSelect={handleLeagueSelect}/>
                 <TeamDropdown selectedLeague={selectedLeague} onTeamSelect={handleTeamSelect}/>
