@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Typography, Grid, Card, CardMedia, CardContent } from '@mui/material';
+import React, {useState, useEffect} from 'react';
+import {Box, Typography, Grid, Card, CardMedia, CardContent, Divider} from '@mui/material';
 import LeagueTeamSelect from './LeagueTeamSelect'; // Assuming a reusable component for league/team selection
 import axios from 'axios';
-import { useAppContext } from '../AppContext';
+import {useAppContext} from '../AppContext';
 import sharedConfig from "../config";
 import SelectLeagueAndTeam from "./LeagueTeamSelect"; // For global context
 
 export default function SquadPage() {
-    const { selectedLeague, selectedTeam } = useAppContext(); // Context for selected league and team
+    const {selectedLeague, selectedTeam} = useAppContext(); // Context for selected league and team
     const [players, setPlayers] = useState([]);
     const [error, setError] = useState(null);
 
@@ -35,33 +35,38 @@ export default function SquadPage() {
     const handleTeamSelect = () => {
     }
     return (
-        <Box sx={{ padding: 3 }}>
+        <Box sx={{padding: 3}}>
             <SelectLeagueAndTeam
                 handleLeagueSelect={handleLeagueSelect}
                 handleTeamSelect={handleTeamSelect}
                 selectedLeague={selectedLeague}/>
             {error && <Typography color="error">{error}</Typography>}
             {selectedTeam && (
-                <Box sx={{ marginTop: 4 }}>
-                    <Typography variant="h5" align="center" gutterBottom>
+                <Box sx={{marginTop: 4, textAlign: "center"}}>
+                    <Typography variant="h5" align="center" gutterBottom
+                                sx={{display: 'inline-flex', alignItems: 'center'}}>
+                        <img src={selectedTeam.logo} alt={`${selectedTeam.name} logo`}
+                             style={{marginLeft: 8, marginRight: 8, height: 40}}/>
                         {selectedTeam.name} Squad
                     </Typography>
+                    <Divider sx={{marginY: 2}}/>
                     <Grid container spacing={4}>
                         {players.map((player) => (
                             <Grid item key={player.id} xs={6} sm={3} md={2}>
-                                <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                <Card sx={{display: 'flex', flexDirection: 'column', height: '100%'}}>
                                     <CardMedia
                                         component="img"
                                         image={player.photo}
                                         alt={`${player.name} photo`}
-                                        sx={{  objectFit: 'cover' }} // Adjusted height for 50% reduction
+                                        sx={{objectFit: 'cover'}} // Adjusted height for 50% reduction
                                     />
                                     <CardContent>
                                         <Typography variant="h6" gutterBottom>
                                             {player.name}
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
-                                            Age: {player.age} | Position: {player.position} | Number: {player.number || 'N/A'}
+                                            Age: {player.age} | Position: {player.position} |
+                                            Number: {player.number || 'N/A'}
                                         </Typography>
                                     </CardContent>
                                 </Card>
