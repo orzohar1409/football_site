@@ -1,8 +1,8 @@
 import {Box, Divider, IconButton, Link, Slide, Typography} from "@mui/material";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LeagueDropdown from "./LeagueDropdown";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../AppContext"; // Assuming you're using React Router
 
 export default function WelcomePage() {
@@ -40,24 +40,30 @@ export default function WelcomePage() {
                         sx={{
                             maxHeight: {xs: 200, md: 200},
                             maxWidth: {xs: 200, md: 250},
-                            padding:2,
+                            padding: 2,
                         }}
                         src="../../logo.png"
                     />
                     {showDropdown && (
                         <>
 
-                            <Typography variant="body2" sx={{ marginTop: 2 }}>
+                            <Typography variant="body2" sx={{marginTop: 2}}>
                                 Disclaimer: This site is for educational purposes only.<br/>
                                 The data is fetched from api-football.com<br/>
                                 Due to budget constraints (non existed), the data is per 2022<br/>
                             </Typography>
-                            <Typography variant="h6" sx={{ marginTop: 4 }}>
+                            <Typography variant="h6" sx={{marginTop: 4}}>
                                 Choose your favourite league and get started!<br/>
                             </Typography>
-                            <Divider sx={{ bgcolor: 'rgba(204,34,34,0.2)', marginY: 2 }} />
-                            <Box sx={{ width:{xs: "40%"}}}>
-                            <LeagueDropdown onLeagueSelect={handleLeagueSelect} />
+                            <Divider sx={{bgcolor: 'rgba(204,34,34,0.2)', marginY: 2}}/>
+                            <Box sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                width: { xs: "100%", sm: "50%", md: "40%" }, // Adjusts width responsively
+                                margin: '0 auto', // Centers the box horizontally
+                            }}>
+                                <LeagueDropdown onLeagueSelect={handleLeagueSelect} />
                             </Box>
                         </>
                     )}

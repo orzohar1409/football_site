@@ -50,6 +50,7 @@ function ScrollToTop() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.body.style.zoom = "70%";
         }, [pathname]);
 
     return null;
