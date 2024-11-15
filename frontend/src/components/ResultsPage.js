@@ -5,7 +5,6 @@ import axios from 'axios';
 import GameTable from './GameTable';
 import SelectLeagueAndTeam from "./LeagueTeamSelect";
 import config from "../config";
-import GameWidget from "./GameWidget";
 import { useAppContext } from "../AppContext";
 const getGamesUrl = (leagueId, teamId) => `${config.API_GET_ALL_GAMES}/${leagueId}/${teamId}`;
 
