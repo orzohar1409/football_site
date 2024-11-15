@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider, responsiveFontSizes } from '@mui/material/s
 import MainContent from './components/MainContent';
 import './App.css';
 import { AppProvider } from './AppContext';
+import {CssBaseline} from "@mui/material";
 
 let theme = createTheme({
     typography: {
@@ -48,6 +49,7 @@ function App() {
 
     return (<AppProvider>
             <ThemeProvider theme={theme}>
+                <CssBaseline />
                 <Router>
                     <TopAppBar/>
                     <MainContent/>

@@ -1,25 +1,101 @@
-/* CalendarPage.css */
-
-/* Style for the event container */
-.rbc-event {
-    font-size: 0.9rem;         /* Customize font size */
-    font-weight: bold;         /* Customize font weight */
-    padding: 4px;              /* Adjust padding for better spacing */
-    color: white;              /* Text color */
-    background-color: #c019d2; /* Use a primary color */
-    border-radius: 4px;        /* Rounded corners */
-    border: none;              /* Remove default border */
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+/* General calendar font */
+.rbc-calendar {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; /* Match Material-UI theme */
 }
 
-/* Optional: Smaller font for event time labels */
+/* Toolbar styles (e.g., navigation buttons) */
+.rbc-toolbar {
+    font-size: 1rem; /* Match theme h6 size */
+    font-weight: 500;
+}
+
+/* Month, Week, Day headers */
+.rbc-header {
+    font-size: 1.1rem; /* Match theme h5 size */
+    font-weight: bold;
+}
+
+/* Day labels (e.g., Monday, Tuesday background) */
+.rbc-day-bg {
+    font-size: 1rem; /* Match theme h6 size */
+    font-weight: normal;
+}
+
+/* Event titles */
+.rbc-event {
+    font-size: 10px; /* Adjust font size as needed */
+    font-weight: bold;
+    color: white;
+    background-color: #c019d2;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    min-height: 20px; /* Set a minimum height for aesthetics */
+    white-space: normal; /* Allow text to wrap */
+    overflow: visible; /* Ensure full visibility of text */
+    word-wrap: break-word; /* Break long words if necessary */
+    word-break: break-word; /* Break words at arbitrary points */
+    display: block; /* Ensure it behaves as a block element */
+}
+
+
+/* Smaller font for event time labels */
 .rbc-event-label {
-    font-size: 0.8rem;
-    color: #555;               /* Adjust label color */
+    font-size: 0.75rem; /* Match theme body2 size */
+    color: #e7e1e1;        /* Adjust label color */
 }
 
 /* Additional customizations for selected and hovered events */
 .rbc-event:hover {
     background-color: #b0bccc; /* Darker background on hover */
     cursor: pointer;           /* Pointer cursor on hover */
+}
+
+/* Time slots */
+.rbc-time-view {
+    font-size: 0.75rem; /* Match theme body2 size */
+    font-weight: normal;
+}
+
+/* Day numbers in the month view */
+.rbc-date-cell {
+    font-size: 5px; /* Match theme body1 size */
+    font-weight: 400;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 600px) {
+    .rbc-toolbar {
+        font-size: 0.9rem; /* Slightly smaller for mobile */
+    }
+
+    .rbc-header {
+        font-size: 1rem; /* Match smaller h6 size */
+    }
+
+    .rbc-event {
+        font-size: 0.8rem; /* Match smaller body2 size */
+        padding: 2px;
+        height: auto; /* Allow the event box to expand as needed */
+    }
+
+    .rbc-event-label {
+        font-size: 0.7rem; /* Smaller body2 size for labels */
+    }
+
+    .rbc-time-view {
+        font-size: 0.7rem; /* Smaller body2 size */
+    }
+
+    .rbc-date-cell {
+        font-size: 0.8rem; /* Match smaller body1 size */
+    }
+}
+
+/* Ensures the event text does not overflow or get cut off */
+.rbc-event-content {
+    white-space: normal; /* Allow multiline text */
+    overflow: visible;   /* Ensure full text is displayed */
+    text-overflow: ellipsis; /* Graceful text overflow handling */
 }

@@ -12,6 +12,7 @@ import config from "../config";
 import {useAppContext} from "../AppContext";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import "./CalendarPage.css"
 
 const locales = {
     'en-US': require('date-fns/locale/en-US'),
@@ -72,11 +73,10 @@ export default function CalendarPage() {
             const teamEvents = gamesData.map(game => ({
                 title: `${game.home_team.name} vs ${game.away_team.name}`,
                 start: new Date(game.date),
-                end: new Date(game.date),
+                end: new Date(new Date(game.date).getTime() + 2 * 60 * 60 * 1000), // 2 hours later
                 teamId: team.id,
                 color: team.color, // Assign team color to event
             }));
-
             setEvents(prevEvents => [...prevEvents, ...teamEvents]);
         } catch (error) {
             console.error('Error fetching games:', error);
@@ -134,12 +134,13 @@ export default function CalendarPage() {
 
             {/* Calendar with events and custom styling */}
             {!loading && (
+
                 <Calendar
                     localizer={localizer}
                     events={events}
                     startAccessor="start"
                     endAccessor="end"
-                    style={{height: 500, marginTop: 20}}
+                    style={{height: "80vh", marginTop: 20, width: "100%"}}
                     defaultView="month"
                     defaultDate={new Date(2022, 8, 1)}
                     eventPropGetter={eventPropGetter} // Apply color to calendar events
