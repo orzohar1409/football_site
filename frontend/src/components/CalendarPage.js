@@ -69,9 +69,9 @@ export default function CalendarPage() {
         try {
             const response = await axios.get(getGamesUrl(selectedLeague.id, team.id));
             const gamesData = response.data;
-
             const teamEvents = gamesData.map(game => ({
-                title: `${game.home_team.name} vs ${game.away_team.name}`,
+
+                title: `vs ${game.home_team.name == team.name ? game.away_team.name : game.home_team.name}`,
                 start: new Date(game.date),
                 end: new Date(new Date(game.date).getTime() + 2 * 60 * 60 * 1000), // 2 hours later
                 teamId: team.id,
@@ -102,6 +102,7 @@ export default function CalendarPage() {
             borderRadius: '4px',
             padding: '4px',
             fontWeight: 'bold',
+            whiteSpace: "normal"
         },
     });
 
@@ -152,7 +153,9 @@ export default function CalendarPage() {
                     }}
                     onView={(view) => setCurrentView(view)} // Update view when user manually changes it
                     onNavigate={(date) => setCurrentDate(date)} // Update date when user navigates
-
+                    formats={{
+                        weekdayFormat: (date) => format(date, 'EEE'), // Abbreviated day names
+                    }}
                 />
             )}
         </Box>

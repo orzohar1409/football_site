@@ -48,10 +48,12 @@
 
 /* Additional customizations for selected and hovered events */
 .rbc-event:hover {
-    background-color: #b0bccc; /* Darker background on hover */
-    cursor: pointer;           /* Pointer cursor on hover */
+    overflow: visible; /* Make the full text visible on hover */
+    white-space: normal; /* Allow text wrapping */
+    z-index: 10; /* Ensure it appears above other elements */
+    background-color: #b0bccc; /* Optional: Change background color on hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Optional: Add a hover effect */
 }
-
 /* Time slots */
 .rbc-time-view {
     font-size: 0.75rem; /* Match theme body2 size */
