@@ -1,7 +1,7 @@
 // src/pages/CalendarPage.js
 
 import React, {useState, useEffect} from 'react';
-import {Calendar, dateFnsLocalizer} from 'react-big-calendar';
+import { Calendar, dateFnsLocalizer, Views } from 'react-big-calendar';
 import {format, parse, startOfWeek, getDay} from 'date-fns';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {Box, Typography, CircularProgress} from '@mui/material';
@@ -40,6 +40,8 @@ export default function CalendarPage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [colorIndex, setColorIndex] = useState(0); // Track current color index for circular assignment
+    const [currentView, setCurrentView] = useState('month'); // Manage the current view
+    const [currentDate, setCurrentDate] = useState(new Date(2022, 8, 1)); // Manage the current date
 
     // Handle team selection and assign a color from the predefined list in a circular manner
     const handleTeamSelect = () => {
@@ -141,6 +143,15 @@ export default function CalendarPage() {
                     defaultView="month"
                     defaultDate={new Date(2022, 8, 1)}
                     eventPropGetter={eventPropGetter} // Apply color to calendar events
+                    view={currentView} // Controlled view
+                    date={currentDate} // Controlled date
+                    onSelectEvent={(event) => {
+                        setCurrentView('day'); // Switch to day view
+                        setCurrentDate(event.start); // Navigate to the event's start date
+                    }}
+                    onView={(view) => setCurrentView(view)} // Update view when user manually changes it
+                    onNavigate={(date) => setCurrentDate(date)} // Update date when user navigates
+
                 />
             )}
         </Box>
