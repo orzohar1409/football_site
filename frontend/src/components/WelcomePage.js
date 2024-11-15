@@ -56,7 +56,7 @@ export default function WelcomePage() {
                                 Choose your favourite league and get started!<br/>
                             </Typography>
                             <Divider sx={{ bgcolor: 'rgba(204,34,34,0.2)', marginY: 2 }} />
-                            <Box sx={{ width:{xs: "50%"}}}>
+                            <Box sx={{ width:{xs: "20%"}}}>
                             <LeagueDropdown onLeagueSelect={handleLeagueSelect} />
                             </Box>
                         </>

@@ -1,6 +1,6 @@
 // src/App.js
 import React, {useEffect} from 'react';
-import {Box} from '@mui/material';
+import {Box, Typography} from '@mui/material';
 
 import SideDrawer from './SideDrawer';
 import {Routes, Route, useLocation} from 'react-router-dom';
@@ -18,7 +18,7 @@ export default function MainContent() {
         marginTop: {xs: '56px', sm: '64px'},
         minHeight: '100vh',
         width: '100%',
-        overflowX: 'hidden',
+        overflowX: 'hidden'
     };
 
     const mainContentStyles = {
@@ -44,6 +44,9 @@ export default function MainContent() {
                 component="main"
                 sx={mainContentStyles}
             >
+                <Typography variant="h4" sx={{color: common.black, marginTop: 2, marginBottom: 2}}>
+                    {appPages.find(page => page.path === location.pathname)?.name}
+                    </Typography>
                 <Routes>
                     {appPages.map((page, index) => (
                         <Route key={index} path={page.path} element={page.component}/>
