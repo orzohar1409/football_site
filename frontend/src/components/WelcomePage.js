@@ -50,7 +50,8 @@ export default function WelcomePage() {
                             <Typography variant="body2" sx={{marginTop: 2}}>
                                 Disclaimer: This site is for educational purposes only.<br/>
                                 The data is fetched from api-football.com<br/>
-                                Due to budget constraints (non existed), the data is per 2022<br/>
+                                Due to budget constraints (non existed), all data is relevant to 2022<br/>
+                                and API limits may be applied.<br/>
                             </Typography>
                             <Typography variant="h6" sx={{marginTop: 4}}>
                                 Choose your favourite league and get started!<br/>
