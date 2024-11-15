@@ -121,7 +121,7 @@ export default function VenuesPage() {
     };
 
     return (
-        <Box sx={{ height: '70vh', width: '100%' }}>
+        <Box sx={{ height: '70vh', width: '100%', marginRight:1 }}>
             <Typography variant="h6" sx={{ padding: 2 }}>
                 Select a league to see its venues!
             </Typography>
@@ -134,7 +134,7 @@ export default function VenuesPage() {
                     </Box>
                 )}
             </Box>
-            <MapContainer center={mapCenter} zoom={5} style={{ height: '100%', width: '100%' }}>
+            <MapContainer center={mapCenter} zoom={5} style={{ height: '100%', width: '100%'}}>
                 <MapCenter center={mapCenter} />
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
