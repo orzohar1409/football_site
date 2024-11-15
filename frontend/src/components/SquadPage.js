@@ -1,0 +1,75 @@
+import React, { useState, useEffect } from 'react';
+import { Box, Typography, Grid, Card, CardMedia, CardContent } from '@mui/material';
+import LeagueTeamSelect from './LeagueTeamSelect'; // Assuming a reusable component for league/team selection
+import axios from 'axios';
+import { useAppContext } from '../AppContext';
+import sharedConfig from "../config";
+import SelectLeagueAndTeam from "./LeagueTeamSelect"; // For global context
+
+export default function SquadPage() {
+    const { selectedLeague, selectedTeam } = useAppContext(); // Context for selected league and team
+    const [players, setPlayers] = useState([]);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        if (selectedTeam) {
+            const fetchSquad = async () => {
+                try {
+                    const response = await axios.get(`${sharedConfig.API_GET_SQUADS}/${selectedTeam.id}`); // Replace with actual endpoint
+                    setPlayers(response.data); // Adjust based on API response structure
+                    setError(null);
+                } catch (err) {
+                    console.error('Error fetching squad:', err);
+                    setError('Unable to load squad data.');
+                }
+            };
+            fetchSquad();
+        } else {
+            setPlayers([]);
+        }
+    }, [selectedTeam]);
+
+    const handleLeagueSelect = () => {
+    }
+
+    const handleTeamSelect = () => {
+    }
+    return (
+        <Box sx={{ padding: 3 }}>
+            <SelectLeagueAndTeam
+                handleLeagueSelect={handleLeagueSelect}
+                handleTeamSelect={handleTeamSelect}
+                selectedLeague={selectedLeague}/>
+            {error && <Typography color="error">{error}</Typography>}
+            {selectedTeam && (
+                <Box sx={{ marginTop: 4 }}>
+                    <Typography variant="h5" align="center" gutterBottom>
+                        {selectedTeam.name} Squad
+                    </Typography>
+                    <Grid container spacing={4}>
+                        {players.map((player) => (
+                            <Grid item key={player.id} xs={6} sm={3} md={2}>
+                                <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                    <CardMedia
+                                        component="img"
+                                        image={player.photo}
+                                        alt={`${player.name} photo`}
+                                        sx={{  objectFit: 'cover' }} // Adjusted height for 50% reduction
+                                    />
+                                    <CardContent>
+                                        <Typography variant="h6" gutterBottom>
+                                            {player.name}
+                                        </Typography>
+                                        <Typography variant="body2" color="textSecondary">
+                                            Age: {player.age} | Position: {player.position} | Number: {player.number || 'N/A'}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Box>
+            )}
+        </Box>
+    );
+}

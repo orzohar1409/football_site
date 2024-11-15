@@ -9,6 +9,7 @@ import ResumePage from './components/ResumePage';
 import WelcomePage from './components/WelcomePage';
 import VenuesPage from './components/VenuesPage';
 import CalendarPage from './components/CalendarPage';
+import SquadPage from './components/SquadPage';
 export const appPages = [
     {
         name: "Welcome",
@@ -37,7 +38,7 @@ export const appPages = [
     {
         name:"Squads",
         path: "/Squads",
-        component: <SquadsPage/>,
+        component: <SquadPage/>,
         icon: () => <GroupsIcon />,
     },
     {
