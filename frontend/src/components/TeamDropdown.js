@@ -38,25 +38,25 @@ export default function TeamDropdown({onTeamSelect}) {
             getOptionLabel={(option) => option.name}
             value={selectedTeam}
             onChange={handleTeamChange}
-            style={{ width: 200 }}
+            style={{ width: "100%"}}
             isOptionEqualToValue={(option, value) => option.id === value?.id}
             renderInput={(params) => (
                 <TextField
                     {...params}
                     label="Select Team"
                     variant="outlined"
-                    size="medium"
+                    size="small"
                     InputProps={{
                         ...params.InputProps,
                         startAdornment: selectedTeam ? (
                             <Avatar
                                 src={selectedTeam.logo}
                                 alt={selectedTeam.name}
-                                sx={{width: 20, height: 20, marginRight: 1}}
+                                sx={{ width: 20, height: 20, marginRight: 0.2, fontSize:5 }}
                             />
                         ) : null,
                         endAdornment: (
-                            <Box sx={{ '& svg': { fontSize: 16 }, '& button': { fontSize: 16 } }}>
+                            <Box sx={{ '& svg': { fontSize: 14 }, '& button': { fontSize: 14 } }}>
                                 {params.InputProps.endAdornment}
                             </Box>
                         ),

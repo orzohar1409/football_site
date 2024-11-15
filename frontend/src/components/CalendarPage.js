@@ -1,7 +1,7 @@
 // src/pages/CalendarPage.js
 
 import React, {useState, useEffect} from 'react';
-import {Calendar, dateFnsLocalizer} from 'react-big-calendar';
+import { Calendar, dateFnsLocalizer, Views } from 'react-big-calendar';
 import {format, parse, startOfWeek, getDay} from 'date-fns';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {Box, Typography, CircularProgress} from '@mui/material';
@@ -12,6 +12,7 @@ import config from "../config";
 import {useAppContext} from "../AppContext";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import "./CalendarPage.css"
 
 const locales = {
     'en-US': require('date-fns/locale/en-US'),
@@ -40,6 +41,8 @@ export default function CalendarPage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [colorIndex, setColorIndex] = useState(0); // Track current color index for circular assignment
+    const [currentView, setCurrentView] = useState('month'); // Manage the current view
+    const [currentDate, setCurrentDate] = useState(new Date(2022, 8, 1)); // Manage the current date
 
     // Handle team selection and assign a color from the predefined list in a circular manner
     const handleTeamSelect = () => {
@@ -66,15 +69,14 @@ export default function CalendarPage() {
         try {
             const response = await axios.get(getGamesUrl(selectedLeague.id, team.id));
             const gamesData = response.data;
-
             const teamEvents = gamesData.map(game => ({
-                title: `${game.home_team.name} vs ${game.away_team.name}`,
+
+                title: `vs ${game.home_team.name == team.name ? game.away_team.name : game.home_team.name}`,
                 start: new Date(game.date),
-                end: new Date(game.date),
+                end: new Date(new Date(game.date).getTime() + 2 * 60 * 60 * 1000), // 2 hours later
                 teamId: team.id,
                 color: team.color, // Assign team color to event
             }));
-
             setEvents(prevEvents => [...prevEvents, ...teamEvents]);
         } catch (error) {
             console.error('Error fetching games:', error);
@@ -100,6 +102,7 @@ export default function CalendarPage() {
             borderRadius: '4px',
             padding: '4px',
             fontWeight: 'bold',
+            whiteSpace: "normal"
         },
     });
 
@@ -108,7 +111,8 @@ export default function CalendarPage() {
             <Box sx={{
                 display: 'flex',
                 gap: 2,
-                alignItems: 'center',
+                alignItems: 'flex-end', // Align elements to the bottom
+                flexWrap: 'wrap', // Allow wrapping for responsiveness
             }}>
                 <SelectLeagueAndTeam
                     handleLeagueSelect={handleLeagueSelect}
@@ -131,15 +135,27 @@ export default function CalendarPage() {
 
             {/* Calendar with events and custom styling */}
             {!loading && (
+
                 <Calendar
                     localizer={localizer}
                     events={events}
                     startAccessor="start"
                     endAccessor="end"
-                    style={{height: 500, marginTop: 20}}
+                    style={{height: "80vh", marginTop: 20, width: "100%"}}
                     defaultView="month"
                     defaultDate={new Date(2022, 8, 1)}
                     eventPropGetter={eventPropGetter} // Apply color to calendar events
+                    view={currentView} // Controlled view
+                    date={currentDate} // Controlled date
+                    onSelectEvent={(event) => {
+                        setCurrentView('day'); // Switch to day view
+                        setCurrentDate(event.start); // Navigate to the event's start date
+                    }}
+                    onView={(view) => setCurrentView(view)} // Update view when user manually changes it
+                    onNavigate={(date) => setCurrentDate(date)} // Update date when user navigates
+                    formats={{
+                        weekdayFormat: (date) => format(date, 'EEE'), // Abbreviated day names
+                    }}
                 />
             )}
         </Box>
