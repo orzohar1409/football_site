@@ -125,7 +125,7 @@ export default function VenuesPage() {
             <Typography variant="h6" sx={{ padding: 2 }}>
                 Select a league to see its venues!
             </Typography>
-            <Box sx={{ maxWidth: 500, width: '100%', padding: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Box sx={{ maxWidth: 500, width: '100%', padding: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <LeagueDropdown onLeagueSelect={handleLeagueChange} />
                 {selectedLeagueId && progress < 100 && !isFinished && (
                     <Box sx={{ marginTop: 2 }}>

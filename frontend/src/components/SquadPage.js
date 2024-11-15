@@ -36,7 +36,7 @@ export default function SquadPage() {
     const handleTeamSelect = () => {}
 
     return (
-        <Box sx={{ padding: 3 }}>
+        <Box sx={{ padding: 1 }}>
             <SelectLeagueAndTeam
                 handleLeagueSelect={handleLeagueSelect}
                 handleTeamSelect={handleTeamSelect}

@@ -42,7 +42,7 @@ export default function ResultsPage() {
     }, [selectedTeam]);
 
     return (
-        <Box sx={{padding: 3}}>
+        <Box sx={{padding: 1}}>
             <SelectLeagueAndTeam
                 handleLeagueSelect={handleLeagueSelect}
                 handleTeamSelect={handleTeamSelect}

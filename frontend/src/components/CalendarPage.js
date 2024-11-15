@@ -107,7 +107,7 @@ export default function CalendarPage() {
     });
 
     return (
-        <Box sx={{padding: 3}}>
+        <Box sx={{padding: 1}}>
             <Box sx={{
                 display: 'flex',
                 gap: 2,
