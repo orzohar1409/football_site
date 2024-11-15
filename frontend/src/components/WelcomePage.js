@@ -62,7 +62,8 @@ export default function WelcomePage() {
 
                             </Box>
                             <Typography variant="body2" sx={{marginTop: 2}}>
-                                * Disclaimer: This site is for educational purposes only.<br/>
+                                * Disclaimer: This site is for educational purposes only and does not collect any personal information.<br />
+                                * Please do not share personal information through this site.<br />
                                 The data is fetched from api-football.com<br/>
                                 * Due to budget constraints (non existent), all data is relevant to 2022<br/>
                                 and API limits may be applied.<br/>
