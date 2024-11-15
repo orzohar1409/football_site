@@ -36,7 +36,7 @@ export default function LeagueDropdown({ onLeagueSelect }) {
             getOptionLabel={(option) => option.name}
             value={selectedLeague || null}
             onChange={handleLeagueChange}
-            style={{ width: "100%" }}
+            style={{ width: "70%"}}
             isOptionEqualToValue={(option, value) => option.id === value?.id}
             renderInput={(params) => (
                 <TextField

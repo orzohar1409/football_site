@@ -12,7 +12,7 @@ export default function WelcomePage() {
 
     const handleLeagueSelect = () => {
         setShowDropdown(false); // Hide dropdown upon selection
-        setIsDrawerOpen(true); // Open the drawer
+        setIsDrawerOpen(false); // Open the drawer
         navigate("/results"); // Navigate to the results page
     };
     return (<>
@@ -56,7 +56,7 @@ export default function WelcomePage() {
                                 Choose your favourite league and get started!<br/>
                             </Typography>
                             <Divider sx={{ bgcolor: 'rgba(204,34,34,0.2)', marginY: 2 }} />
-                            <Box sx={{ width:{xs: "20%"}}}>
+                            <Box sx={{ width:{xs: "40%"}}}>
                             <LeagueDropdown onLeagueSelect={handleLeagueSelect} />
                             </Box>
                         </>

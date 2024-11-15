@@ -37,7 +37,7 @@ export default function TeamDropdown({onTeamSelect}) {
             getOptionLabel={(option) => option.name}
             value={selectedTeam}
             onChange={handleTeamChange}
-            style={{ width: "100%"}}
+            style={{ width: "70%"}}
             isOptionEqualToValue={(option, value) => option.id === value?.id}
             renderInput={(params) => (
                 <TextField
