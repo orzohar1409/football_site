@@ -47,12 +47,6 @@ export default function WelcomePage() {
                     {showDropdown && (
                         <>
 
-                            <Typography variant="body2" sx={{marginTop: 2}}>
-                                Disclaimer: This site is for educational purposes only.<br/>
-                                The data is fetched from api-football.com<br/>
-                                Due to budget constraints (non existed), all data is relevant to 2022<br/>
-                                and API limits may be applied.<br/>
-                            </Typography>
                             <Typography variant="h6" sx={{marginTop: 4}}>
                                 Choose your favourite league and get started!<br/>
                             </Typography>
@@ -65,7 +59,16 @@ export default function WelcomePage() {
                                 margin: '0 auto', // Centers the box horizontally
                             }}>
                                 <LeagueDropdown onLeagueSelect={handleLeagueSelect} />
+
                             </Box>
+                            <Typography variant="body2" sx={{marginTop: 2}}>
+                                * Disclaimer: This site is for educational purposes only.<br/>
+                                The data is fetched from api-football.com<br/>
+                                * Due to budget constraints (non existent), all data is relevant to 2022<br/>
+                                and API limits may be applied.<br/>
+                                * The site uses free-tier hosting, so when idle for a while, it may take a few seconds to load.
+
+                            </Typography>
                         </>
                     )}
                 </Box>

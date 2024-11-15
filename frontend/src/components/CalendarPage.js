@@ -118,6 +118,9 @@ export default function CalendarPage() {
                 alignItems: 'flex-end', // Align elements to the bottom
                 flexWrap: 'wrap', // Allow wrapping for responsiveness
             }}>
+                <Typography variant="h6" sx={{ paddingB: 1, fontSize: 6}}>
+                    Select league and team, then press "ADD TO CALENDAR"
+                </Typography>
                 <SelectLeagueAndTeam
                     handleLeagueSelect={handleLeagueSelect}
                     handleTeamSelect={() => {}}
@@ -126,6 +129,9 @@ export default function CalendarPage() {
                 <Button variant="contained" endIcon={<SendIcon />} onClick={handleTeamSelect} sx={{mb:2}}>
                     Add to calendar
                 </Button>
+                <Typography variant="body1">
+                    * you may choose several teams
+                </Typography>
             </Box>
             {/* Display selected teams as chips */}
             <TeamSelectWithChips
