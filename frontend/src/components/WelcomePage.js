@@ -2,14 +2,17 @@ import {Box, Divider, IconButton, Link, Slide, Typography} from "@mui/material";
 import React, { useState } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LeagueDropdown from "./LeagueDropdown";
-import { useNavigate } from "react-router-dom"; // Assuming you're using React Router
+import { useNavigate } from "react-router-dom";
+import {useAppContext} from "../AppContext"; // Assuming you're using React Router
 
 export default function WelcomePage() {
     const [showDropdown, setShowDropdown] = useState(true);
+    const {setIsDrawerOpen} = useAppContext();
     const navigate = useNavigate();
 
     const handleLeagueSelect = () => {
         setShowDropdown(false); // Hide dropdown upon selection
+        setIsDrawerOpen(true); // Open the drawer
         navigate("/results"); // Navigate to the results page
     };
     return (<>
@@ -22,8 +25,8 @@ export default function WelcomePage() {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        height: '80vh',
                         padding: 0,
+                        marginTop: '64px',
                         position: 'center',
                         textAlign: 'center',
                     }}
@@ -43,11 +46,19 @@ export default function WelcomePage() {
                     />
                     {showDropdown && (
                         <>
+
+                            <Typography variant="body2" sx={{ marginTop: 2 }}>
+                                Disclaimer: This site is for educational purposes only.<br/>
+                                The data is fetched from api-football.com<br/>
+                                Due to budget constraints (non existed), the data is per 2022<br/>
+                            </Typography>
                             <Typography variant="h6" sx={{ marginTop: 4 }}>
-                                Choose your favourite league and get started!
+                                Choose your favourite league and get started!<br/>
                             </Typography>
                             <Divider sx={{ bgcolor: 'rgba(204,34,34,0.2)', marginY: 2 }} />
+                            <Box sx={{ width:{xs: "50%"}}}>
                             <LeagueDropdown onLeagueSelect={handleLeagueSelect} />
+                            </Box>
                         </>
                     )}
                 </Box>

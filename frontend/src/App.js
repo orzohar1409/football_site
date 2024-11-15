@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import TopAppBar from './components/TopAppBar';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import {HashRouter as Router, Routes, Route, useLocation} from 'react-router-dom';
 import { createTheme, ThemeProvider, responsiveFontSizes } from '@mui/material/styles';
 import MainContent from './components/MainContent';
 import './App.css';
@@ -45,12 +45,22 @@ let theme = createTheme({
     },
 });
 
+function ScrollToTop() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+}
 function App() {
 
     return (<AppProvider>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <Router>
+                    <ScrollToTop />
                     <TopAppBar/>
                     <MainContent/>
                 </Router>
