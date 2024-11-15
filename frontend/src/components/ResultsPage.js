@@ -1,19 +1,21 @@
-// src/ResultsPage.js
 import React, { useState, useEffect } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, CircularProgress } from '@mui/material';
 import axios from 'axios';
 import GameTable from './GameTable';
 import SelectLeagueAndTeam from "./LeagueTeamSelect";
 import config from "../config";
 import { useAppContext } from "../AppContext";
+
 const getGamesUrl = (leagueId, teamId) => `${config.API_GET_ALL_GAMES}/${leagueId}/${teamId}`;
 
 export default function ResultsPage() {
-    const {selectedLeague} = useAppContext();
-    const {selectedTeam} = useAppContext();
+    const { selectedLeague } = useAppContext();
+    const { selectedTeam } = useAppContext();
     const [games, setGames] = useState([]);
     const [showGames, setShowGames] = useState(false);
+    const [loading, setLoading] = useState(false); // State for loading spinner
     const [error, setError] = useState(null);
+
     const handleLeagueSelect = () => {
         setShowGames(false);
     };
@@ -23,8 +25,9 @@ export default function ResultsPage() {
     };
 
     useEffect(() => {
-        if (selectedTeam) {
+        if (selectedTeam && selectedLeague) {
             async function fetchGames() {
+                setLoading(true); // Start loading spinner
                 try {
                     const response = await axios.get(getGamesUrl(selectedLeague.id, selectedTeam.id));
                     setGames(response.data);
@@ -32,6 +35,8 @@ export default function ResultsPage() {
                 } catch (error) {
                     console.error('Error fetching games:', error);
                     setError('Failed to fetch game data. Please try again later.');
+                } finally {
+                    setLoading(false); // Stop loading spinner
                 }
             }
 
@@ -39,22 +44,28 @@ export default function ResultsPage() {
         } else {
             setGames([]);
         }
-    }, [selectedTeam]);
+    }, [selectedTeam, selectedLeague]);
 
     return (
-        <Box sx={{padding: 1}}>
+        <Box sx={{ padding: 1 }}>
             <SelectLeagueAndTeam
                 handleLeagueSelect={handleLeagueSelect}
                 handleTeamSelect={handleTeamSelect}
-                selectedLeague={selectedLeague}/>
+                selectedLeague={selectedLeague} />
             {error && <Typography color="error">{error}</Typography>}
-            {selectedTeam && selectedLeague && (
-                <Box sx={{marginTop: 4}}>
-                    <Typography variant="h6" gutterBottom>
-                        Results
-                    </Typography>
-                    <GameTable games={games}/>
+            {loading ? (
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 4 }}>
+                    <CircularProgress /> {/* Loading spinner */}
                 </Box>
+            ) : (
+                selectedTeam && selectedLeague && (
+                    <Box sx={{ marginTop: 4 }}>
+                        <Typography variant="h6" gutterBottom>
+                            Results
+                        </Typography>
+                        <GameTable games={games} />
+                    </Box>
+                )
             )}
         </Box>
     );

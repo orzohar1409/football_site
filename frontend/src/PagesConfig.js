@@ -18,16 +18,16 @@ export const appPages = [
         icon: () => <Home />,
     },
     {
-        name:"Venues",
-        path: "/venues",
-        component: <VenuesPage/>,
-        icon: () => <SportsSoccerIcon />,
-    },
-    {
         name: "Results",
         path: "/results",
         component: <ResultsPage/>,
         icon: () => <SportsIcon />,
+    },
+    {
+        name:"Venues",
+        path: "/venues",
+        component: <VenuesPage/>,
+        icon: () => <SportsSoccerIcon />,
     },
     {
         name:"Calendar",
