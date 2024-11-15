@@ -78,6 +78,10 @@ export default function CalendarPage() {
                 color: team.color, // Assign team color to event
             }));
             setEvents(prevEvents => [...prevEvents, ...teamEvents]);
+            if (teamEvents.length > 0) {
+                setCurrentDate(teamEvents[0].start); // Focus on the first event's date
+                setCurrentView('month'); // Ensure the view is set to "month"
+            }
         } catch (error) {
             console.error('Error fetching games:', error);
             setError('Failed to fetch game data. Please try again later.');

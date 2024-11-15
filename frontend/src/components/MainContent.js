@@ -18,7 +18,8 @@ export default function MainContent() {
         marginTop: {xs: '56px', sm: '64px'},
         minHeight: '100vh',
         width: '100%',
-        overflowX: 'hidden'
+        overflowX: 'hidden',
+        padding:1
     };
 
     const mainContentStyles = {
@@ -45,9 +46,7 @@ export default function MainContent() {
                 component="main"
                 sx={mainContentStyles}
             >
-                <Typography variant="h4" sx={{color: common.black, marginTop: 2, marginBottom: 2}}>
-                    {appPages.find(page => page.path === location.pathname)?.name}
-                    </Typography>
+
                 <Routes>
                     {appPages.map((page, index) => (
                         <Route key={index} path={page.path} element={page.component}/>
