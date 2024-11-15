@@ -15,8 +15,6 @@ export default function ResultsPage() {
     const [games, setGames] = useState([]);
     const [showGames, setShowGames] = useState(false);
     const [error, setError] = useState(null);
-
-
     const handleLeagueSelect = () => {
         setShowGames(false);
     };
@@ -51,7 +49,7 @@ export default function ResultsPage() {
                 handleTeamSelect={handleTeamSelect}
                 selectedLeague={selectedLeague}/>
             {error && <Typography color="error">{error}</Typography>}
-            {showGames && (
+            {selectedTeam && selectedLeague && (
                 <Box sx={{marginTop: 4}}>
                     <Typography variant="h6" gutterBottom>
                         Results

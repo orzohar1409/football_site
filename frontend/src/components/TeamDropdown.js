@@ -14,7 +14,6 @@ export default function TeamDropdown({onTeamSelect}) {
                 try {
                     const response = await axios.get(`${config.API_GET_ALL_TEAMS}/${selectedLeagueId}`);
                     setTeams(response.data);
-                    setSelectedTeam(null);
                 } catch (error) {
                     console.error('Error fetching teams:', error);
                 }
