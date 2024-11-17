@@ -9,8 +9,7 @@ import { useAppContext } from "../AppContext";
 const getGamesUrl = (leagueId, teamId) => `${config.API_GET_ALL_GAMES}/${leagueId}/${teamId}`;
 
 export default function ResultsPage() {
-    const { selectedLeague } = useAppContext();
-    const { selectedTeam } = useAppContext();
+    const { selectedLeague, selectedTeam } = useAppContext();
     const [games, setGames] = useState([]);
     const [showGames, setShowGames] = useState(false);
     const [loading, setLoading] = useState(false); // State for loading spinner
