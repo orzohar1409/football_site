@@ -10,6 +10,7 @@ export default function LeagueDropdown({ onLeagueSelect }) {
     const {setSelectedLeagueId} = useAppContext();
     const {allLeagues, setAllLeagues} = useAppContext();
     const {error, setError} = useAppContext();
+    const {setSelectedTeam} = useAppContext();
     useEffect(() => {
         async function fetchLeagues() {
             try {
@@ -27,6 +28,9 @@ export default function LeagueDropdown({ onLeagueSelect }) {
     const handleLeagueChange = (event, newLeague) => {
         setSelectedLeague(newLeague ? newLeague : null);
         setSelectedLeagueId(newLeague ? newLeague.id : null);
+        if(newLeague){
+            setSelectedTeam(null);
+        }
         onLeagueSelect();
     };
 
