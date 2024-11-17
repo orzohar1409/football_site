@@ -77,7 +77,7 @@
     }
 
     .rbc-event {
-        font-size: 0.8rem; /* Match smaller body2 size */
+        font-size: 0.45rem; /* Match smaller body2 size */
         padding: 2px;
         height: auto; /* Allow the event box to expand as needed */
     }
