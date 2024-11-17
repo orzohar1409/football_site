@@ -21,6 +21,7 @@ export default function TopAppBar() {
         height: 50,
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
     };
 
     // Find the page object matching the current path
@@ -33,8 +34,6 @@ export default function TopAppBar() {
     return (
         <AppBar position="fixed" sx={appBarStyles}>
             <Toolbar>
-                {/* Left Section: Icon and Ballon d'Or */}
-                <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 0 }}>
                     <IconButton
                         edge="start"
                         color="inherit"
@@ -43,20 +42,12 @@ export default function TopAppBar() {
                     >
                         {isDrawerOpen ? <CloseIcon /> : <DehazeOutlinedIcon />}
                     </IconButton>
-                    <Typography variant="h6" sx={{ ml: 1 }}>
-                        Ballon d'Or
+                    <Typography variant="h6" sx={{flexGrow: 1}}>
+                        Ballon d'Or - {currentTitle}
                     </Typography>
-                </Box>
 
-                {/* Center Section: Page Title */}
-                <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
-                    <Typography variant="h6" align="center">
-                        {currentTitle}
-                    </Typography>
-                </Box>
+                    <Box component="img" src={logo} sx={logoStyles}/>
 
-                {/* Right Section: Logo */}
-                <Box component="img" src={logo} sx={logoStyles} />
             </Toolbar>
         </AppBar>
     );
