@@ -98,6 +98,13 @@ export default function CalendarPage() {
     const handleLeagueSelect = () => {
         // No action needed; preserve selected teams and events
     };
+
+    // Handle event selection to navigate to the day view
+    const handleSelectEvent = (event) => {
+        setCurrentView('day');
+        setCurrentDate(event.start);
+    };
+
     // Custom event styling based on team color
     const eventPropGetter = (event) => ({
         style: {
@@ -157,10 +164,7 @@ export default function CalendarPage() {
                     eventPropGetter={eventPropGetter} // Apply color to calendar events
                     view={currentView} // Controlled view
                     date={currentDate} // Controlled date
-                    onSelectEvent={(event) => {
-                        setCurrentView('day'); // Switch to day view
-                        setCurrentDate(event.start); // Navigate to the event's start date
-                    }}
+                    onSelectEvent={handleSelectEvent} // Handle event selection
                     onView={(view) => setCurrentView(view)} // Update view when user manually changes it
                     onNavigate={(date) => setCurrentDate(date)} // Update date when user navigates
                     formats={{
