@@ -25,8 +25,7 @@ export default function WelcomePage() {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        padding: 0,
-                        marginTop: '64px',
+                        padding: 2,
                         position: 'center',
                         textAlign: 'center',
                     }}
@@ -55,48 +54,28 @@ export default function WelcomePage() {
                                 display: 'flex',
                                 justifyContent: 'center',
                                 alignItems: 'center',
-                                width: { xs: "100%", sm: "50%", md: "40%" }, // Adjusts width responsively
+                                width: {xs: "100%", sm: "50%", md: "40%"}, // Adjusts width responsively
                                 margin: '0 auto', // Centers the box horizontally
                             }}>
-                                <LeagueDropdown onLeagueSelect={handleLeagueSelect} />
+                                <LeagueDropdown onLeagueSelect={handleLeagueSelect}/>
 
                             </Box>
                             <Typography variant="body2" sx={{marginTop: 2}}>
-                                * Disclaimer: This site is for educational purposes only and does not collect any personal information.<br />
-                                * Please do not share personal information through this site.<br />
+                                * Disclaimer: This site is for educational purposes only and does not collect any
+                                personal information.<br/>
+                                * Please do not share personal information through this site.<br/>
                                 The data is fetched from api-football.com<br/>
                                 * Due to budget constraints (non existent), all data is relevant to 2022<br/>
                                 and API limits may be applied.<br/>
-                                * The site uses free-tier hosting, so when idle for a while, it may take a few seconds to load.
+                                * The site uses free-tier hosting, so when idle for a while, it may take a few seconds
+                                to load.
 
                             </Typography>
                         </>
                     )}
                 </Box>
             </Slide>
-            <Box component="footer" sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                padding: 2,
-                position: 'center',
-                bottom: 0,
-            }}
-            >
-                <Typography variant="body2" color="text.secondary">
-                    Check my project on{' '}
-                    <Link
-                        href="https://github.com/orzohar1409/football_site"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        color="inherit"
-                    >
-                        GitHub
-                    </Link>
-                    . <GitHubIcon sx={{mr: 1}}/>
 
-                </Typography>
-            </Box>
         </>
     );
 }

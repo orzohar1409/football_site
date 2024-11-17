@@ -122,8 +122,8 @@ export default function VenuesPage() {
 
     return (
         <Box sx={{ height: '70vh', width: '100%', marginRight:1 }}>
-            <Typography variant="h6" sx={{ padding: 2 }}>
-                Select a league to see its venues!
+            <Typography variant="h4" sx={{ padding: 1 }}>
+                Select a league to see its venues in the map, press on each marker for venue details
             </Typography>
             <Box sx={{ maxWidth: 500, width: '100%', padding: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <LeagueDropdown onLeagueSelect={handleLeagueChange} />

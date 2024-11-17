@@ -1,12 +1,13 @@
 // src/App.js
 import React, {useEffect} from 'react';
-import {Box, Typography} from '@mui/material';
+import {Box, Link, Typography} from '@mui/material';
 
 import SideDrawer from './SideDrawer';
 import {Routes, Route, useLocation} from 'react-router-dom';
 import {appPages} from "../PagesConfig";
 import {common} from "@mui/material/colors";
 import {useAppContext} from "../AppContext";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 export default function MainContent() {
     const {isDrawerOpen, toggleDrawer} = useAppContext();
@@ -52,6 +53,29 @@ export default function MainContent() {
                         <Route key={index} path={page.path} element={page.component}/>
                     ))}
                 </Routes>
+                <Box component="footer" sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: 2,
+                    position: 'center',
+                    bottom: 0,
+                }}
+                >
+                    <Typography variant="h6" color="text.secondary">
+                        Check my project on{' '}
+                        <Link
+                            href="https://github.com/orzohar1409/football_site"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            color="inherit"
+                        >
+                            GitHub
+                        </Link>
+                        . <GitHubIcon sx={{mr: 1}}/>
+
+                    </Typography>
+                </Box>
             </Box>
         </Box>
     );

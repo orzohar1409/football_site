@@ -37,6 +37,9 @@ export default function SquadPage() {
 
     return (
         <Box sx={{ padding: 1 }}>
+            <Typography variant="h4" sx={{ padding: 1 }}>
+                Select league and team to see its squad
+            </Typography>
             <SelectLeagueAndTeam
                 handleLeagueSelect={handleLeagueSelect}
                 handleTeamSelect={handleTeamSelect}

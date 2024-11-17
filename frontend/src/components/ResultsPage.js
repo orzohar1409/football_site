@@ -48,6 +48,9 @@ export default function ResultsPage() {
 
     return (
         <Box sx={{ padding: 0 }}>
+            <Typography variant="h4" sx={{padding: 1}}>
+                Select league and team to see its results
+            </Typography>
             <SelectLeagueAndTeam
                 handleLeagueSelect={handleLeagueSelect}
                 handleTeamSelect={handleTeamSelect}

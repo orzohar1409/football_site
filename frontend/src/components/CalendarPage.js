@@ -118,7 +118,7 @@ export default function CalendarPage() {
                 alignItems: 'flex-end', // Align elements to the bottom
                 flexWrap: 'wrap', // Allow wrapping for responsiveness
             }}>
-                <Typography variant="h6" sx={{ paddingB: 1, fontSize: 6}}>
+                <Typography variant="h4">
                     Select league and team, then press "ADD TO CALENDAR"
                 </Typography>
                 <SelectLeagueAndTeam
