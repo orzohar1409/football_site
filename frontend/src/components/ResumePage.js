@@ -38,7 +38,7 @@ export default function ResumePage() {
                     />
                     <Box>
                         <Typography variant="h4">Or Zohar</Typography>
-                        <Typography variant="subtitle1">Cyber Analyst & Big Data Expert</Typography>
+                        <Typography variant="subtitle1">Software Developer</Typography>
                     </Box>
                 </Box>
 
