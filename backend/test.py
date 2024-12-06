@@ -26,4 +26,3 @@ def filter_leagues(data):
                 })
 
     return filtered_leagues
-print(response.json())

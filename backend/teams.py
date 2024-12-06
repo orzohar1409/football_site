@@ -7,7 +7,6 @@ from cache_manager import load_cache, save_cache
 def get_all_teams_by_league(league_id):
     """Fetch teams data from cache or API."""
     data = load_cache(cache_key=config.CacheKeys.TEAMS, item_id=str(league_id))
-    print("here")
     if data:
         return data
     # Otherwise, fetch from API and save to cache
@@ -41,5 +40,4 @@ def filter_team_data(data):
 
 def fetch_teams_from_api(league_id):
     url = f"{config.FOOTBALL_API_BASE_URL}/teams?league={league_id}&season={config.FOOTBALL_API_SEASON}"
-    print(url)
     return filter_team_data(api_utils.request_api(url))
