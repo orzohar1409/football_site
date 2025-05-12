@@ -7,7 +7,7 @@ export default function ProfessionalSummary() {
             {/* Professional Summary Section */}
             <Box sx={{ pl: 2 }}> {/* Adjust padding-left as needed */}
                 <Typography variant="body1" paragraph>
-                    • 3 Years as Cyber Analyst at CyberMDX (acquired by Forescout)
+                    • 3 Years as Cyber Analyst + Developer at CyberMDX (acquired by Forescout)
                 </Typography>
                 <Typography variant="body1" paragraph>
                     • 2.5 Years in Big Data Analysis at the Cyber Defense Brigade (formerly part of Unit 8200) – Splunk, Elastic, SQL
