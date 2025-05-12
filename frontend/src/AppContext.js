@@ -10,7 +10,7 @@ export const AppProvider = ({ children }) => {
     const [selectedTeamId, setSelectedTeamId] = useState(null);
     const [teams, setTeams] = useState([]);
     const [games, setGames] = useState([]);
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(true);
     const [selectedGame, setSelectedGame] = useState(null);
     const [error, setError] = useState(null);
     const toggleDrawer = () => {

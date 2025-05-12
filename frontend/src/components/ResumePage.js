@@ -72,7 +72,7 @@ export default function ResumePage() {
                             </Grid>
                             <Grid item xs>
                                 <ListItemText
-                                    primary={<Typography variant="h6">Cyber Analyst</Typography>}
+                                    primary={<Typography variant="h6">Cyber Analyst + Developer</Typography>}
                                     secondary="CyberMDX (2019 - 2022)"
                                     sx={{ mb: 1 }}  // Adds spacing between job title and bullet points
                                 />
@@ -159,6 +159,7 @@ export default function ResumePage() {
                                     • Intro to System Programming – 92 <br />
                                     • Computer Organization and Programming – 88 <br />
                                     • Digital Systems and Computer Structure – 89 <br />
+                                    • Network Defence – 89 <br />
                                     • Psychometric Score – 752
                                 </Typography>
                             </Grid>
@@ -186,7 +187,7 @@ export default function ResumePage() {
 
                 {/* Footer */}
                 <Box sx={{ textAlign: 'center', mt: 4 }}>
-                    <Typography variant="caption">Or Zohar - 2024</Typography>
+                    <Typography variant="caption">Or Zohar - 2025</Typography>
                 </Box>
             </Box></Slide>
     );
