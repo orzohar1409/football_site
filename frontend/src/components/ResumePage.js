@@ -72,7 +72,7 @@ export default function ResumePage() {
                             </Grid>
                             <Grid item xs>
                                 <ListItemText
-                                    primary={<Typography variant="h6">Cyber Analyst + Developer</Typography>}
+                                    primary={<Typography variant="h6">Cyber Analyst & Software Developer</Typography>}
                                     secondary="CyberMDX (2019 - 2022)"
                                     sx={{ mb: 1 }}  // Adds spacing between job title and bullet points
                                 />
@@ -130,7 +130,7 @@ export default function ResumePage() {
                             </Grid>
                             <Grid item xs={12} sm={8}>
                                 <Typography variant="body2">
-                                    • Trained high school students in cybersecurity concepts and practices
+                                    • Trained students in cybersecurity concepts and practices
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -152,7 +152,7 @@ export default function ResumePage() {
                                 />
                             </Grid>
                             <Grid item xs>
-                                <ListItemText primary="Computer Science, Technion" secondary="Completed 2nd Year" sx={{ mb: 1 }} />
+                                <ListItemText primary="Computer Science, Technion - GPA 81.3" secondary="Completed 3rd Year" sx={{ mb: 1 }} />
                             </Grid>
                             <Grid item xs={12} sm={8}>
                                 <Typography variant="body2">
@@ -173,15 +173,19 @@ export default function ResumePage() {
                 <List>
                     <ListItem>
                         <ListItemIcon><Code /></ListItemIcon>
+                        <ListItemText primary="Software Developer" />
+                    </ListItem>
+                    <ListItem>
+                        <ListItemIcon><Code /></ListItemIcon>
+                        <ListItemText primary="Programming Languages: C, C++, Python, React JS" />
+                    </ListItem>
+                    <ListItem>
+                        <ListItemIcon><Code /></ListItemIcon>
                         <ListItemText primary="Cyber Analysis & Threat Intelligence" />
                     </ListItem>
                     <ListItem>
                         <ListItemIcon><Code /></ListItemIcon>
                         <ListItemText primary="Big Data Tools: Splunk, Elastic, SQL, MongoDB" />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemIcon><Code /></ListItemIcon>
-                        <ListItemText primary="Programming Languages: C, C++, Python" />
                     </ListItem>
                 </List>
 
