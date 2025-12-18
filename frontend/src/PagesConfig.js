@@ -10,6 +10,8 @@ import WelcomePage from './components/WelcomePage';
 import VenuesPage from './components/VenuesPage';
 import CalendarPage from './components/CalendarPage';
 import SquadPage from './components/SquadPage';
+import IoTPage from "./components/IoTPage";
+
 export const appPages = [
     {
         name: "Welcome",
@@ -46,5 +48,11 @@ export const appPages = [
         path: "/resume",
         component: <ResumePage/>,
         icon: () => <AccountCircle />,
-    }
+    },
+    {
+        name: "IoT Project",
+        path: "/iot_project",
+        component: <IoTPage/>,
+        icon: () => <AccountCircle />,
+    },
 ];
