@@ -1,7 +1,7 @@
 {   "REACT_APP_ENVIRONMENT": "prod",
     "FRONTEND_PORT": "3000",
     "API_PORT": "443",
-    "API_KEY": "b6a3ecfbd367417ba8373b35b34b0f88",
+    "API_KEY": "9518e5c11b79ee03600df5766418d8f1",
     "APP_HOSTNAME": "https://football-site-backend.onrender.com",
     "API_ENDPOINT": "api",
     "API_LEAGUES_ENDPOINT": "league",
