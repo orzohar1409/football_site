@@ -51,8 +51,8 @@ export const appPages = [
     },
     {
         name: "IoT Project",
-        path: "/iot_project",
-        component: <IoTPage/>,
+        path: "https://smart-bottle-frontend.onrender.com/",
+        external: true,
         icon: () => <AccountCircle />,
     },
 ];
