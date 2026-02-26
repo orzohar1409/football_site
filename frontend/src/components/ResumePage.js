@@ -152,7 +152,7 @@ export default function ResumePage() {
                                 />
                             </Grid>
                             <Grid item xs>
-                                <ListItemText primary="Computer Science, Technion - GPA 81.3" secondary="Completed 3rd Year" sx={{ mb: 1 }} />
+                                <ListItemText primary="Computer Science, Technion - GPA 85" secondary="Completed 3rd Year" sx={{ mb: 1 }} />
                             </Grid>
                             <Grid item xs={12} sm={8}>
                                 <Typography variant="body2">
@@ -193,7 +193,7 @@ export default function ResumePage() {
 
                 {/* Footer */}
                 <Box sx={{ textAlign: 'center', mt: 4 }}>
-                    <Typography variant="caption">Or Zohar - 2025</Typography>
+                    <Typography variant="caption">Or Zohar - 2026</Typography>
                 </Box>
             </Box></Slide>
     );
