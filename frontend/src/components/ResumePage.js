@@ -160,6 +160,8 @@ export default function ResumePage() {
                                     • Computer Organization and Programming – 88 <br />
                                     • Digital Systems and Computer Structure – 89 <br />
                                     • Network Defence – 89 <br />
+                                    • Functional Programming – 100 <br />
+                                    • IoT Project - 96 <br />
                                     • Psychometric Score – 752
                                 </Typography>
                             </Grid>
